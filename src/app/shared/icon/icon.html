@@ -1,0 +1,66 @@
+<svg
+  [attr.width]="size()"
+  [attr.height]="size()"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  [attr.stroke-width]="strokeWidth()"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+>
+  @switch (name()) {
+    @case ('check') {
+      <path d="M20 6 9 17l-5-5"></path>
+    }
+    @case ('clock') {
+      <circle cx="12" cy="12" r="9"></circle>
+      <path d="M12 7v5l3 2"></path>
+    }
+    @case ('shield') {
+      <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"></path>
+      <path d="m9 12 2 2 4-4"></path>
+    }
+    @case ('laptop') {
+      <path d="M4 17V7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10"></path>
+      <path d="M2 17h20v2H2z"></path>
+    }
+    @case ('chart') {
+      <path d="M12 20V10M18 20V4M6 20v-4"></path>
+    }
+    @case ('chat') {
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    }
+    @case ('play') {
+      <path d="m8 6 12 6-12 6z"></path>
+    }
+    @case ('window') {
+      <path d="M4 4h16v14H4zM4 9h16"></path>
+    }
+    @case ('bulb') {
+      <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zM9 21h6"></path>
+    }
+    @case ('graduation') {
+      <path d="M12 3 3 8l9 5 9-5-9-5zM3 16l9 5 9-5M3 12l9 5 9-5"></path>
+    }
+    @case ('code') {
+      <path d="m16 18 6-6-6-6M8 6l-6 6 6 6"></path>
+    }
+    @case ('sun') {
+      <circle cx="12" cy="12" r="4"></circle>
+      <path
+        d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+      ></path>
+    }
+    @case ('moon') {
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path>
+    }
+    @case ('mail') {
+      <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+      <path d="m2 7 10 7 10-7"></path>
+    }
+    @case ('telegram') {
+      <path d="M21 3 3 10.5l6 2.5 2.5 6L21 3zM9 13l12-10"></path>
+    }
+  }
+</svg>

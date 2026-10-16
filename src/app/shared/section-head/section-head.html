@@ -1,0 +1,7 @@
+<div class="section-head" [class.section-head--center]="centered()">
+  <span class="eyebrow">{{ eyebrow() }}</span>
+  <h2>{{ title() }}</h2>
+  @if (lead(); as text) {
+    <p class="lead">{{ text }}</p>
+  }
+</div>

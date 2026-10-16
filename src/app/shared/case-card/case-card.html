@@ -1,0 +1,77 @@
+<article class="case" [class.case--wide]="data().wide">
+  @if (data().media; as media) {
+    @if (!data().mediaAfter) {
+      <div
+        class="case__media"
+        [class.case__media--b]="media.variant === 'b'"
+        [class.case__media--c]="media.variant === 'c'"
+        [class.case__media--tall]="media.tall"
+      >
+        {{ media.text }}
+      </div>
+    }
+  }
+
+  <div class="case__body">
+    @if (data().eyebrow; as eyebrow) {
+      <span class="eyebrow">{{ eyebrow }}</span>
+    }
+    @if (data().tagsFirst) {
+      <ng-container [ngTemplateOutlet]="tags"></ng-container>
+    }
+    <h3 class="case__title">
+      @if (data().titleRoute; as route) {
+        <a [routerLink]="route">{{ data().title }}</a>
+      } @else {
+        {{ data().title }}
+      }
+    </h3>
+    @if (!data().tagsFirst) {
+      <ng-container [ngTemplateOutlet]="tags"></ng-container>
+    }
+    @if (data().text; as text) {
+      <p class="muted case__text">{{ text }}</p>
+    }
+    @for (block of data().blocks ?? []; track block.label) {
+      <p class="muted case__text">
+        <b>{{ block.label }}.</b> {{ block.text }}
+      </p>
+    }
+    @if (data().results?.length) {
+      <div class="case__result">
+        @for (result of data().results; track result.label) {
+          <div class="case__result-item">
+            <b class="case__result-value">{{ result.value }}</b>
+            <span class="case__result-label">{{ result.label }}</span>
+          </div>
+        }
+      </div>
+    }
+    @if (data().link; as link) {
+      <a class="link-arrow" [routerLink]="link.route" [fragment]="link.fragment">{{
+        link.label
+      }}</a>
+    }
+  </div>
+
+  @if (data().media; as media) {
+    @if (data().mediaAfter) {
+      <div
+        class="case__media"
+        [class.case__media--b]="media.variant === 'b'"
+        [class.case__media--c]="media.variant === 'c'"
+        [class.case__media--tall]="media.tall"
+      >
+        {{ media.text }}
+      </div>
+    }
+  }
+</article>
+
+<ng-template #tags>
+  <ul class="case__tags">
+    @for (tag of data().tags; track tag) {
+      <li class="case__tag">{{ tag }}</li>
+    }
+  </ul>
+</ng-template>

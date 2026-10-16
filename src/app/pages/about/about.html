@@ -1,0 +1,80 @@
+<section class="section section--tight">
+  <div class="container hero__grid">
+    <div class="prose">
+      <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+      <span class="eyebrow">Обо мне</span>
+      <h1>Привет, меня зовут Александр</h1>
+      <p class="lead">
+        Более 10 лет занимаюсь веб-разработкой полного цикла — от лендингов до интернет-магазинов,
+        веб-приложений и мобильных продуктов. Люблю котиков и природу, по выходным хожу в водные
+        походы на сапах и пакрафтах.
+      </p>
+      <p>
+        В работе не просто «закрываю задачи», а по-настоящему погружаюсь в них: пока цель не
+        достигнута, спокойно спать не получается. Поэтому довожу проекты до результата, а не до
+        формального «сдано».
+      </p>
+
+      <h2 class="prose__h2">Чем я занимаюсь</h2>
+      <ul>
+        <li class="prose__item">
+          <b>Разработка:</b> новые проекты, фичи, рефакторинг, оптимизация.
+        </li>
+        <li class="prose__item">
+          <b>Поддержка:</b> исправление багов, обновления, мониторинг, бэкапы.
+        </li>
+        <li class="prose__item"><b>Интеграции:</b> API, платёжные шлюзы, внешние сервисы.</li>
+        <li class="prose__item"><b>CMS-проекты:</b> внедрение, кастомизация, миграция.</li>
+        <li class="prose__item">
+          <b>Обучение:</b> веб-программирование и Game Dev для детей и взрослых.
+        </li>
+      </ul>
+
+      <h2 class="prose__h2">С какими проектами работал</h2>
+      <ul>
+        <li class="prose__item">
+          <b>Лендинги и промо-страницы:</b> скорость, адаптивность, конверсия.
+        </li>
+        <li class="prose__item">
+          <b>Сайты компаний и интернет-магазины:</b> WordPress, MODX, OpenCart — каталоги, корзина,
+          оплата, доставка.
+        </li>
+        <li class="prose__item">
+          <b>SPA/PWA:</b> React, Angular — кэширование, офлайн-доступ, производительность.
+        </li>
+        <li class="prose__item"><b>Мобильные приложения</b> под Android.</li>
+        <li class="prose__item"><b>2D-игры</b> и обучение геймдеву.</li>
+      </ul>
+
+      <h2 class="prose__h2">Технологический стек</h2>
+      <ul>
+        <li class="prose__item">
+          <b>Frontend:</b> JavaScript, TypeScript, React, Angular, Next.js.
+        </li>
+        <li class="prose__item">
+          <b>Backend:</b> PHP, C# (ASP.NET Core), Node.js, архитектура API.
+        </li>
+        <li class="prose__item">
+          <b>CMS:</b> WordPress, MODX, OpenCart — внедрение и кастомизация.
+        </li>
+        <li class="prose__item">
+          <b>Данные и инфраструктура:</b> MySQL, PostgreSQL, MongoDB, SQLite, Docker, CI/CD.
+        </li>
+        <li class="prose__item"><b>Game Dev:</b> GameMaker, Scratch, Unity, Roblox.</li>
+      </ul>
+
+      <h2 class="prose__h2">Как я работаю</h2>
+      <p>
+        Сначала короткий бриф и оценка, затем — фиксированная смета и срок. Показываю прогресс на
+        промежуточных демо, а после запуска остаюсь на поддержке. Объясняю простыми словами и
+        предлагаю варианты решения под вашу задачу.
+      </p>
+      <blockquote class="prose__quote">
+        Готов обсудить задачу и дать предварительную оценку. Первая консультация — бесплатно.
+      </blockquote>
+      <p><a class="btn btn--primary" routerLink="/" fragment="contact">Обсудить проект</a></p>
+    </div>
+
+    <app-hero-card [card]="profile"></app-hero-card>
+  </div>
+</section>

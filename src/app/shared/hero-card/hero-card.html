@@ -1,0 +1,31 @@
+<aside class="hero-card" [attr.aria-label]="card().title ?? 'С чего начать'">
+  @if (card().person; as person) {
+    <div class="hero-card__person">
+      <span class="avatar avatar--lg" aria-hidden="true">{{ person.initial }}</span>
+      <div>
+        <b class="hero-card__person-name">{{ person.name }}</b>
+        <div class="hero-card__person-role">{{ person.role }}</div>
+      </div>
+    </div>
+  } @else {
+    <h3 class="hero-card__title">{{ card().title }}</h3>
+    <p class="hero-card__note">{{ card().note }}</p>
+  }
+
+  @for (row of card().rows; track row.label) {
+    <div class="hero-card__row">
+      <span class="hero-card__label">{{ row.label }}</span>
+      <span class="hero-card__value" [class.hero-card__value--badge]="row.badge">{{
+        row.value
+      }}</span>
+    </div>
+  }
+
+  <a
+    class="btn btn--primary btn--block hero-card__btn"
+    [routerLink]="card().button.route"
+    [fragment]="card().button.fragment"
+    >{{ card().button.label }}</a
+  >
+  <p class="hero-card__hint">{{ card().hint }}</p>
+</aside>

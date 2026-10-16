@@ -1,0 +1,14 @@
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  @for (item of items(); track item.label; let last = $last) {
+    @if (item.route) {
+      <a class="breadcrumbs__link" [routerLink]="item.route" [fragment]="item.fragment">{{
+        item.label
+      }}</a>
+    } @else {
+      <span>{{ item.label }}</span>
+    }
+    @if (!last) {
+      <span class="breadcrumbs__sep"> · </span>
+    }
+  }
+</nav>

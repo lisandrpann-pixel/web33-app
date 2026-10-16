@@ -1,0 +1,59 @@
+<app-hero [hero]="hero"></app-hero>
+
+<section class="section section--soft">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Для кого"
+      title="Найдём программу под ваш уровень и цель"
+    ></app-section-head>
+    <div class="grid grid--3">
+      @for (card of forWhom; track card.title) {
+        <app-info-card [card]="card"></app-info-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section" id="programs">
+  <div class="container">
+    <app-section-head
+      eyebrow="Программы и цены"
+      title="Направления обучения"
+      lead="Выберите направление — либо соберём индивидуальный маршрут под цель."
+    ></app-section-head>
+    <div class="grid grid--3">
+      @for (pkg of programs; track pkg.title) {
+        <app-service-card [pkg]="pkg" [cta]="programCta"></app-service-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Как проходят занятия"
+      title="Четыре принципа, на которых строится обучение"
+    ></app-section-head>
+    <div class="grid grid--2">
+      @for (feature of principles; track feature.title) {
+        <app-feature [feature]="feature"></app-feature>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Вопросы"
+      title="Частые вопросы об обучении"
+    ></app-section-head>
+    <app-faq [items]="faq"></app-faq>
+  </div>
+</section>
+
+<app-contact-cta [data]="contact" [reply]="shortReply" [soft]="true"></app-contact-cta>

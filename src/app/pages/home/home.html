@@ -1,0 +1,103 @@
+<app-hero [hero]="hero"></app-hero>
+
+<section class="section section--soft" id="services">
+  <div class="container">
+    <app-section-head
+      eyebrow="Услуги и цены"
+      title="Прозрачные пакеты: что входит, сроки и от чего зависит цена"
+      lead="Ниже — базовые сценарии. Нужно что-то другое? Опишите задачу — соберу индивидуальную смету."
+    ></app-section-head>
+
+    <div class="grid grid--3">
+      @for (pkg of services; track pkg.title) {
+        <app-service-card [pkg]="pkg"></app-service-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Как я работаю"
+      title="Пять этапов — от задачи до готового результата"
+    ></app-section-head>
+    <div class="steps">
+      @for (step of steps; track step.title) {
+        <div class="steps__item">
+          <h4 class="steps__title">{{ step.title }}</h4>
+          <p class="steps__text">{{ step.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft" id="cases">
+  <div class="container">
+    <app-section-head
+      eyebrow="Кейсы"
+      title="Не слова, а результат"
+      lead="Задача → решение → измеримый результат. Ниже — краткая витрина, полностью — в разделе «Кейсы»."
+    ></app-section-head>
+
+    <div class="grid grid--3">
+      @for (item of cases; track item.title) {
+        <app-case-card [data]="item"></app-case-card>
+      }
+    </div>
+
+    <p class="section-foot"><a class="link-arrow" routerLink="/cases">Все кейсы с деталями</a></p>
+  </div>
+</section>
+
+<section class="section" id="stack">
+  <div class="container">
+    <app-section-head
+      eyebrow="Технологии"
+      title="Инструменты под задачу, а не «модный стек» ради моды"
+      lead="Подбираю технологии исходя из бюджета, сроков и планов на развитие проекта."
+    ></app-section-head>
+    <app-stack [groups]="stack"></app-stack>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Почему я"
+      title="Работа со мной — предсказуемый результат"
+    ></app-section-head>
+    <div class="grid grid--3">
+      @for (feature of features; track feature.title) {
+        <app-feature [feature]="feature"></app-feature>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <app-section-head
+      [centered]="true"
+      eyebrow="Отзывы"
+      title="Что говорят клиенты и ученики"
+    ></app-section-head>
+    <div class="grid grid--3">
+      @for (item of testimonials; track item.name) {
+        <app-quote [quote]="item"></app-quote>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <app-section-head [centered]="true" eyebrow="Вопросы" title="Частые вопросы"></app-section-head>
+    <app-faq [items]="faq"></app-faq>
+  </div>
+</section>
+
+<app-contact-cta [data]="contact"></app-contact-cta>

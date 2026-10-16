@@ -1,0 +1,15 @@
+@for (group of groups(); track group.title) {
+  <div class="stack">
+    <h4 class="stack__title">{{ group.title }}</h4>
+    <div class="stack__items">
+      @for (chip of group.items; track chip.name) {
+        <span class="chip">
+          <i class="chip__icon" [style.background]="chip.bg" [style.color]="chip.color ?? null">{{
+            chip.abbr
+          }}</i>
+          {{ chip.name }}</span
+        >
+      }
+    </div>
+  </div>
+}

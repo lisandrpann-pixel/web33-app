@@ -1,0 +1,20 @@
+<app-page-head
+  [breadcrumbs]="breadcrumbs"
+  [eyebrow]="page.eyebrow"
+  [title]="page.title"
+  [lead]="page.lead"
+></app-page-head>
+
+<section class="section section--tight">
+  <div class="container">
+    @for (item of cases; track item.title) {
+      <app-case-card [data]="item"></app-case-card>
+    }
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container outro">
+    <app-outro [title]="outro.title" [lead]="outro.lead" [cta]="outro.button"></app-outro>
+  </div>
+</section>

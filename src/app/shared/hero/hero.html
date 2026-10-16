@@ -1,0 +1,35 @@
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <span class="eyebrow">{{ hero().eyebrow }}</span>
+      <h1 class="hero__title" [innerHTML]="headingHtml()"></h1>
+      <p class="lead lead--narrow">{{ hero().lead }}</p>
+      <div class="hero__actions">
+        @for (action of hero().actions; track action.label) {
+          <a
+            class="btn btn--lg"
+            [class.btn--primary]="action.variant === 'primary'"
+            [class.btn--ghost]="action.variant === 'ghost'"
+            [routerLink]="action.route"
+            [fragment]="action.fragment"
+            >{{ action.label }}</a
+          >
+        }
+      </div>
+      @if (hero().note; as note) {
+        <p class="hero__note">{{ note }}</p>
+      }
+
+      <ul class="trust">
+        @for (item of hero().trust; track item) {
+          <li class="trust__item">
+            <app-icon class="trust__icon" name="check" [size]="18" [strokeWidth]="2.5"></app-icon>
+            {{ item }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <app-hero-card [card]="hero().card"></app-hero-card>
+  </div>
+</section>

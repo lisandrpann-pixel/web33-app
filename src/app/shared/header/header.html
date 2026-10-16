@@ -1,0 +1,94 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" routerLink="/">
+      <img
+        class="logo__img"
+        src="img/logo.webp"
+        width="380"
+        height="168"
+        alt="web33 — Александр, веб-разработка"
+      />
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <ul class="nav__list">
+        @for (item of nav(); track item.label) {
+          <li>
+            <a class="nav__link" [routerLink]="item.route" [fragment]="item.fragment">{{
+              item.label
+            }}</a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <a
+        class="btn btn--primary site-header__cta"
+        [routerLink]="cta().route"
+        [fragment]="cta().fragment"
+        >{{ cta().label }}</a
+      >
+      <button
+        class="theme-toggle"
+        type="button"
+        (click)="toggleTheme()"
+        aria-label="Переключить тему"
+        [attr.aria-pressed]="isDark()"
+        [attr.title]="isDark() ? 'Включить светлую тему' : 'Включить тёмную тему'"
+      >
+        <app-icon
+          class="theme-toggle__icon theme-toggle__icon--sun"
+          name="sun"
+          [size]="20"
+        ></app-icon>
+        <app-icon
+          class="theme-toggle__icon theme-toggle__icon--moon"
+          name="moon"
+          [size]="20"
+        ></app-icon>
+      </button>
+      <button
+        class="burger"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Открыть меню"
+      >
+        <span class="burger__line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav" [class.mobile-nav--open]="menuOpen()" aria-label="Мобильная навигация">
+  <ul class="mobile-nav__list">
+    @for (item of nav(); track item.label) {
+      <li class="mobile-nav__item">
+        <a
+          class="mobile-nav__link"
+          [routerLink]="item.route"
+          [fragment]="item.fragment"
+          (click)="closeMenu()"
+          >{{ item.label }}</a
+        >
+      </li>
+    }
+    <li class="mobile-nav__item">
+      <a
+        class="mobile-nav__link"
+        [routerLink]="mobileContact().route"
+        [fragment]="mobileContact().fragment"
+        (click)="closeMenu()"
+        >{{ mobileContact().label }}</a
+      >
+    </li>
+  </ul>
+  <a
+    class="btn btn--primary btn--block btn--lg"
+    [routerLink]="cta().route"
+    [fragment]="cta().fragment"
+    (click)="closeMenu()"
+    >{{ cta().label }}</a
+  >
+</nav>

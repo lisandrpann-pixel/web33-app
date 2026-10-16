@@ -1,0 +1,26 @@
+<article class="service" [class.service--featured]="pkg().featured">
+  @if (pkg().tag; as tag) {
+    <span class="service__tag">{{ tag }}</span>
+  }
+  <h3 class="service__title">{{ pkg().title }}</h3>
+  <div class="service__price">
+    {{ pkg().price }}
+    @if (pkg().priceNote; as note) {
+      <span class="service__price-note">{{ note }}</span>
+    }
+  </div>
+  <div class="service__meta">{{ pkg().meta }}</div>
+  <ul class="service__list">
+    @for (item of pkg().items; track item) {
+      <li class="service__item">{{ item }}</li>
+    }
+  </ul>
+  <a
+    class="btn btn--block service__btn"
+    [class.btn--primary]="pkg().featured"
+    [class.btn--ghost]="!pkg().featured"
+    [routerLink]="cta().route"
+    [fragment]="cta().fragment"
+    >{{ cta().label }}</a
+  >
+</article>

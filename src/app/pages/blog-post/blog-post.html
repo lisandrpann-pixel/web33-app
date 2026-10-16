@@ -1,0 +1,42 @@
+@if (post(); as article) {
+  <article class="section">
+    <div class="container">
+      <div class="prose prose--center">
+        <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+        <span class="eyebrow">{{ article.eyebrow }}</span>
+        <h1>{{ article.title }}</h1>
+        <p class="lead">{{ article.lead }}</p>
+
+        @for (block of article.blocks; track $index) {
+          @if (block.h2) {
+            <h2 class="prose__h2">{{ block.h2 }}</h2>
+          }
+          @if (block.p) {
+            <p>{{ block.p }}</p>
+          }
+          @if (block.ul) {
+            <ul>
+              @for (item of block.ul; track $index) {
+                <li class="prose__item">
+                  @if (item.b) {
+                    <b>{{ item.b }}</b>
+                  }
+                  {{ item.text }}
+                </li>
+              }
+            </ul>
+          }
+          @if (block.quote) {
+            <blockquote class="prose__quote">{{ block.quote }}</blockquote>
+          }
+        }
+
+        <p>
+          Если хотите предметную оценку своего проекта —
+          <a class="link-arrow" routerLink="/" fragment="contact">оставьте заявку</a>, посчитаю
+          смету и срок бесплатно.
+        </p>
+      </div>
+    </div>
+  </article>
+}

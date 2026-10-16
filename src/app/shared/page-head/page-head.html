@@ -1,0 +1,10 @@
+<section class="page-head">
+  <div class="container">
+    <app-breadcrumbs [items]="breadcrumbs()"></app-breadcrumbs>
+    <span class="eyebrow">{{ eyebrow() }}</span>
+    <h1>{{ title() }}</h1>
+    @if (lead(); as text) {
+      <p class="lead lead--wide">{{ text }}</p>
+    }
+  </div>
+</section>
