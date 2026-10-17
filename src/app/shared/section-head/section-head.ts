@@ -3,7 +3,7 @@ import { booleanAttribute, Component, input } from '@angular/core';
 @Component({
   selector: 'app-section-head',
   templateUrl: './section-head.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './section-head.scss',
 })
 export class SectionHead {
   readonly eyebrow = input.required<string>();

@@ -5,7 +5,7 @@ import { CONTACTS, FOOTER_ABOUT, SITE_NAV } from '../../data/site.data';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './footer.scss',
   imports: [RouterLink],
 })
 export class Footer {

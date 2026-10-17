@@ -1,0 +1,73 @@
+:host {
+  display: contents;
+}
+
+.cta {
+  position: relative;
+  background: var(--bg-ink);
+  color: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(var(--space-4), 5vw, var(--space-7));
+  overflow: hidden;
+  border: 1px solid transparent;
+}
+[data-theme='dark'] .cta {
+  border-color: var(--line);
+}
+.cta::before {
+  content: '';
+  position: absolute;
+  right: -140px;
+  bottom: -180px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  /* Свечение в тон акценту логотипа */
+  background: radial-gradient(circle, rgba(var(--accent-rgb), 0.22), transparent 65%);
+}
+.cta__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-7);
+  align-items: start;
+  position: relative;
+}
+.cta__eyebrow {
+  color: #ffd97a;
+}
+.cta__title {
+  color: #fff;
+}
+.cta__contacts {
+  list-style: none;
+  margin: var(--space-5) 0 0;
+  padding: 0;
+}
+.cta__contact {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) 0;
+  color: #dfe5f1;
+}
+.cta__link {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    color var(--t) var(--ease),
+    text-decoration-color var(--t) var(--ease);
+}
+.cta__link:hover {
+  color: #bcd0ff;
+  text-decoration-color: currentColor;
+}
+
+@media (max-width: 1024px) {
+  .cta__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}

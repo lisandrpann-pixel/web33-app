@@ -7,7 +7,7 @@ import { ContactCtaData } from './contact-cta.model';
 @Component({
   selector: 'app-contact-cta',
   templateUrl: './contact-cta.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './contact-cta.scss',
   imports: [Icon, ContactForm],
 })
 export class ContactCta {

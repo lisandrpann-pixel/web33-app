@@ -1,0 +1,21 @@
+:host {
+  display: contents;
+}
+
+.breadcrumbs {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: var(--space-4);
+}
+.breadcrumbs__link {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    color var(--t) var(--ease),
+    text-decoration-color var(--t) var(--ease);
+}
+.breadcrumbs__link:hover {
+  color: var(--brand);
+  text-decoration-color: currentColor;
+}

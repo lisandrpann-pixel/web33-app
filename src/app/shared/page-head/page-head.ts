@@ -5,7 +5,7 @@ import { Breadcrumb } from '../breadcrumbs/breadcrumbs.model';
 @Component({
   selector: 'app-page-head',
   templateUrl: './page-head.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './page-head.scss',
   imports: [Breadcrumbs],
 })
 export class PageHead {

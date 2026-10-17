@@ -5,7 +5,7 @@ import { InfoCardData } from './info-card.model';
 @Component({
   selector: 'app-info-card',
   templateUrl: './info-card.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './info-card.scss',
   imports: [Icon],
 })
 export class InfoCard {

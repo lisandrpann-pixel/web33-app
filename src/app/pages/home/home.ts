@@ -24,7 +24,7 @@ import { Stack } from '../../shared/stack/stack';
 @Component({
   selector: 'app-home',
   templateUrl: './home.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './home.scss',
   imports: [
     RouterLink,
     Hero,

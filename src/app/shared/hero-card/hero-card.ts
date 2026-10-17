@@ -5,7 +5,7 @@ import { HeroCardData } from './hero-card.model';
 @Component({
   selector: 'app-hero-card',
   templateUrl: './hero-card.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './hero-card.scss',
   imports: [RouterLink],
 })
 export class HeroCard {

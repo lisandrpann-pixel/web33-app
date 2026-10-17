@@ -1,0 +1,27 @@
+:host {
+  display: contents;
+}
+
+.feature {
+  display: flex;
+  gap: var(--space-4);
+}
+.feature__ico {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+.feature__title {
+  font-size: 1.1rem;
+  margin: 0 0 var(--space-1);
+}
+.feature__text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}

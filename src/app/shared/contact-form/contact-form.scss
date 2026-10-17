@@ -1,0 +1,107 @@
+:host {
+  display: contents;
+}
+
+.form {
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+}
+.form__field {
+  margin-bottom: var(--space-4);
+}
+.form__label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+.form__input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-size: 0.96rem;
+  background: var(--surface-2);
+  color: var(--ink);
+  transition:
+    border-color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease);
+}
+.form__input::placeholder {
+  color: var(--muted-2);
+}
+.form__input:focus {
+  outline: none;
+  border-color: var(--accent-text);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.3);
+}
+.form__input--area {
+  resize: vertical;
+  min-height: 96px;
+}
+.form__field--error .form__input {
+  border-color: #e5484d;
+}
+.form__error {
+  display: none;
+  color: #e5484d;
+  font-size: 0.82rem;
+  margin-top: var(--space-1);
+}
+.form__field--error .form__error {
+  display: block;
+}
+.form__consent {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-start;
+  font-size: 0.84rem;
+  color: var(--muted);
+  margin: var(--space-1) 0 var(--space-4);
+}
+.form__checkbox {
+  margin-top: var(--space-1);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  accent-color: var(--accent-text);
+}
+.form__link {
+  color: var(--brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition:
+    color var(--t) var(--ease),
+    text-decoration-color var(--t) var(--ease);
+}
+.form__link:hover {
+  text-decoration-color: transparent;
+}
+.form__note {
+  font-size: 0.8rem;
+  color: var(--muted-2);
+  text-align: center;
+  margin: var(--space-3) 0 0;
+}
+.form__success {
+  display: none;
+  background: var(--green-soft);
+  border: 1px solid var(--green-border);
+  color: var(--green-text);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: 0.92rem;
+}
+.form__success--visible {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .form {
+    padding: var(--space-4);
+  }
+}

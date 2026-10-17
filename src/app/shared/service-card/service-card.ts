@@ -11,7 +11,7 @@ export const DEFAULT_SERVICE_CTA: ServiceCta = {
 @Component({
   selector: 'app-service-card',
   templateUrl: './service-card.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './service-card.scss',
   imports: [RouterLink],
 })
 export class ServiceCard {

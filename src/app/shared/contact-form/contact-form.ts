@@ -7,7 +7,7 @@ import { ContactFormConfig } from './contact-form.model';
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './contact-form.scss',
   imports: [ReactiveFormsModule, RouterLink],
 })
 export class ContactForm {

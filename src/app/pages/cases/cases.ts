@@ -8,7 +8,7 @@ import { PageHead } from '../../shared/page-head/page-head';
 @Component({
   selector: 'app-cases',
   templateUrl: './cases.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './cases.scss',
   imports: [PageHead, CaseCard, Outro],
 })
 export class Cases {

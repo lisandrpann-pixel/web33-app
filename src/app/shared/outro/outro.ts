@@ -5,7 +5,7 @@ import { ServiceCta } from '../service-card/service-card.model';
 @Component({
   selector: 'app-outro',
   templateUrl: './outro.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './outro.scss',
   imports: [RouterLink],
 })
 export class Outro {

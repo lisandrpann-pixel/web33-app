@@ -4,7 +4,7 @@ import { Testimonial } from './quote.model';
 @Component({
   selector: 'app-quote',
   templateUrl: './quote.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './quote.scss',
 })
 export class Quote {
   readonly quote = input.required<Testimonial>();

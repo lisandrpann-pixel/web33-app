@@ -11,7 +11,7 @@ import { Icon } from '../icon/icon';
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './header.scss',
   imports: [RouterLink, Icon],
 })
 export class Header {

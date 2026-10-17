@@ -5,7 +5,7 @@ import { FeatureItem } from './feature.model';
 @Component({
   selector: 'app-feature',
   templateUrl: './feature.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './feature.scss',
   imports: [Icon],
 })
 export class Feature {

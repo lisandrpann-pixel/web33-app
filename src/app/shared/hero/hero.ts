@@ -11,7 +11,7 @@ function escapeHtml(value: string): string {
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './hero.scss',
   imports: [RouterLink, Icon, HeroCard],
 })
 export class Hero {

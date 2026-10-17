@@ -5,7 +5,7 @@ import { Breadcrumb } from './breadcrumbs.model';
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './breadcrumbs.scss',
   imports: [RouterLink],
 })
 export class Breadcrumbs {

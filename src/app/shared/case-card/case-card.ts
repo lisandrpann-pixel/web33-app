@@ -6,7 +6,7 @@ import { CaseCardData } from './case-card.model';
 @Component({
   selector: 'app-case-card',
   templateUrl: './case-card.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './case-card.scss',
   imports: [RouterLink, NgTemplateOutlet],
 })
 export class CaseCard {

@@ -1,0 +1,77 @@
+:host {
+  display: contents;
+}
+
+.hero {
+  position: relative;
+  padding: clamp(var(--space-7), 7vw, var(--space-9)) 0 clamp(var(--space-6), 6vw, var(--space-8));
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  right: -180px;
+  top: -160px;
+  width: 620px;
+  height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(var(--accent-rgb), 0.18), transparent 62%);
+  pointer-events: none;
+}
+.hero__title {
+  margin-bottom: var(--space-4);
+}
+/* Выделенное слово в H1 — жёлтый «маркер» из логотипа (жёлтым текстом на белом нельзя: 1.9:1).
+   Разметка заголовка приходит через [innerHTML], поэтому стилизуем её через ::ng-deep. */
+:host ::ng-deep .hero__accent {
+  font-style: normal;
+  background-image: linear-gradient(180deg, transparent 58%, var(--accent) 58%);
+  padding: 0 0.06em;
+}
+/* В тёмной теме маркер не нужен: светлый текст на жёлтом не читается (1.4:1) */
+:host-context([data-theme='dark']) ::ng-deep .hero__accent {
+  background-image: none;
+  color: var(--accent-text);
+}
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+.hero__note {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Блок: trust (список преимуществ) */
+.trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  list-style: none;
+  padding-left: 0;
+}
+.trust__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.92rem;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.trust__icon {
+  flex-shrink: 0;
+  color: var(--green);
+}
+
+@media (max-width: 640px) {
+  .trust {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+}

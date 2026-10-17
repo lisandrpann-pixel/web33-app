@@ -1,0 +1,56 @@
+:host {
+  display: contents;
+}
+
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  margin: 0;
+  transition:
+    transform var(--t) var(--ease),
+    box-shadow var(--t) var(--ease),
+    border-color var(--t) var(--ease);
+}
+.quote:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--accent);
+}
+.quote__text {
+  font-size: 1.02rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+.quote__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+.quote__name {
+  display: block;
+  font-size: 0.95rem;
+}
+.quote__role {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.stars {
+  color: var(--accent);
+  letter-spacing: 2px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .quote {
+    padding: var(--space-4);
+  }
+}
