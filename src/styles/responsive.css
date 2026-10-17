@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Общий адаптив и prefers-reduced-motion для глобальных примитивов.
+   ========================================================================== */
+
+/* ==========================================================================
+   Адаптив (общие блоки)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  .lead--narrow {
+    max-width: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .grid--3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 16px;
+  }
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Reduced motion ----------
+   Уважаем системную настройку «уменьшить движение», но не «обрубаем»
+   интерфейс целиком: убираем перемещения/повороты и keyframe-анимации
+   (они дают вестибулярную нагрузку), а плавную смену цвета, фона,
+   рамки и тени оставляем — она безопасна и не выглядит рывком.
+   Намеренно держим этот блок глобальным: он описывает поведение всего
+   интерфейса, а не отдельного компонента. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  /* Оставляем у «движущихся» элементов только цветовые переходы */
+  .btn,
+  .btn::before,
+  .btn::after,
+  .nav__link::before,
+  .card,
+  .service,
+  .case,
+  .quote,
+  .chip,
+  .link-arrow::after,
+  .faq__question::after,
+  .mobile-nav {
+    transition-property: color, background-color, border-color, box-shadow !important;
+  }
+
+  /* Гасим сами перемещения и повороты */
+  .btn:hover,
+  .btn:active,
+  .card:hover,
+  .service:hover,
+  .case:hover,
+  .quote:hover,
+  .chip:hover,
+  .logo:hover .logo__img,
+  .link-arrow:hover::after,
+  .faq__item[open] .faq__question::after {
+    transform: none !important;
+  }
+
+  /* Мобильное меню открывается/закрывается без «выезда» */
+  .mobile-nav {
+    transition: none !important;
+  }
+  /* Логотип-картинка не «подпрыгивает» и не анимирует сдвиг */
+  .logo__img {
+    transition: none !important;
+  }
+}

@@ -176,7 +176,7 @@
   transition: color var(--t) var(--ease);
 }
 .mobile-nav__link:hover {
-  color: var(--brand);
+  color: var(--link);
 }
 
 @media (max-width: 1024px) {

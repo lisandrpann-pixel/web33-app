@@ -15,11 +15,11 @@
       /* Тема применяется до отрисовки, чтобы не было «вспышки» неверной темы. */
       (function () {
         try {
-          var t = localStorage.getItem('web33-theme');
-          if (t !== 'light' && t !== 'dark') {
-            t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          var theme = localStorage.getItem('web33-theme');
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
           }
-          document.documentElement.setAttribute('data-theme', t);
+          document.documentElement.setAttribute('data-theme', theme);
         } catch (e) {}
       })();
     </script>
