@@ -53,7 +53,7 @@
         type="button"
         (click)="toggleMenu()"
         [attr.aria-expanded]="menuOpen()"
-        aria-label="Открыть меню"
+        [attr.aria-label]="menuOpen() ? 'Закрыть меню' : 'Открыть меню'"
       >
         <span class="burger__line" aria-hidden="true"></span>
       </button>

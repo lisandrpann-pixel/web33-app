@@ -33,8 +33,10 @@
       type="text"
       autocomplete="name"
       [attr.placeholder]="config().namePlaceholder"
+      [attr.aria-invalid]="nameInvalid()"
+      [attr.aria-describedby]="nameInvalid() ? id('name-error') : null"
     />
-    <span class="form__error">Укажите имя</span>
+    <span class="form__error" [id]="id('name-error')">Укажите имя</span>
   </div>
 
   <div class="form__field" [class.form__field--error]="contactInvalid()">
@@ -46,8 +48,10 @@
       type="text"
       autocomplete="email"
       placeholder="you@mail.ru или @username"
+      [attr.aria-invalid]="contactInvalid()"
+      [attr.aria-describedby]="contactInvalid() ? id('contact-error') : null"
     />
-    <span class="form__error">Оставьте контакт для связи</span>
+    <span class="form__error" [id]="id('contact-error')">Оставьте контакт для связи</span>
   </div>
 
   <div class="form__field">
