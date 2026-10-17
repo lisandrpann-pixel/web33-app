@@ -19,7 +19,7 @@ export class About {
 
   protected readonly profile: HeroCardData = {
     title: 'Обо мне',
-    person: { name: 'Александр', role: 'Веб-разработчик, full-stack', initial: 'А' },
+    person: { name: 'Александр', role: 'Веб-разработчик, full-stack' },
     rows: [
       { label: 'Опыт в вебе', value: '10+ лет' },
       { label: 'Специализация', value: 'Full-stack' },

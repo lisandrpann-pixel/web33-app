@@ -2,7 +2,7 @@
   <div class="stars" aria-label="5 из 5">★★★★★</div>
   <p class="quote__text">{{ quote().text }}</p>
   <div class="quote__author">
-    <span class="avatar" aria-hidden="true">{{ quote().initial }}</span>
+    <app-avatar [name]="quote().name" />
     <span>
       <b class="quote__name">{{ quote().name }}</b>
       <span class="quote__role">{{ quote().role }}</span>

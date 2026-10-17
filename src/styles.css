@@ -5,7 +5,7 @@
      1. Токены — цвет, шкала отступов (--space-1 … --space-9), радиусы, тени.
      2. База (reset) — единственное место, где используются селекторы по тегам.
      3. Общие примитивы — container, section, eyebrow, lead, btn, grid, logo,
-        avatar, prose, а также утилиты (.muted, .section-foot, .link-arrow).
+        prose, а также утилиты (.muted, .section-foot, .link-arrow).
      4. Общий адаптив и prefers-reduced-motion.
 
    Стили конкретных компонентов лежат рядом с компонентами — в отдельных
@@ -348,33 +348,6 @@ ul {
 }
 .grid--3 {
   grid-template-columns: repeat(3, 1fr);
-}
-
-/* ==========================================================================
-   Блок: avatar (общий — отзывы и карточка профиля)
-   ========================================================================== */
-.avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--accent), #ffd76b);
-  color: #0f172a;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  flex-shrink: 0;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-.avatar--lg {
-  width: 64px;
-  height: 64px;
-  font-size: 1.4rem;
 }
 
 /* ==========================================================================

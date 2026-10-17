@@ -7,7 +7,7 @@ export interface HeroCardRow {
 export interface HeroCardData {
   title?: string;
   note?: string;
-  person?: { name: string; role: string; initial: string };
+  person?: { name: string; role: string };
   rows: HeroCardRow[];
   button: { label: string; route: string; fragment?: string };
   hint: string;
