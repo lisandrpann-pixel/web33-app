@@ -2,7 +2,15 @@
   <div class="container hero__grid">
     <div>
       <span class="eyebrow">{{ hero().eyebrow }}</span>
-      <h1 class="hero__title" [innerHTML]="headingHtml()"></h1>
+      <h1 class="hero__title">
+        @for (part of hero().titleParts; track $index) {
+          @if (part.accent) {
+            <em class="hero__accent">{{ part.text }}</em>
+          } @else {
+            <span>{{ part.text }}</span>
+          }
+        }
+      </h1>
       <p class="lead lead--narrow">{{ hero().lead }}</p>
       <div class="hero__actions">
         @for (action of hero().actions; track action.label) {

@@ -21,15 +21,14 @@
 .hero__title {
   margin-bottom: var(--space-4);
 }
-/* Выделенное слово в H1 — жёлтый «маркер» из логотипа (жёлтым текстом на белом нельзя: 1.9:1).
-   Разметка заголовка приходит через [innerHTML], поэтому стилизуем её через ::ng-deep. */
-:host ::ng-deep .hero__accent {
+/* Выделенное слово в H1 — жёлтый «маркер» из логотипа (жёлтым текстом на белом нельзя: 1.9:1). */
+.hero__accent {
   font-style: normal;
   background-image: linear-gradient(180deg, transparent 58%, var(--accent) 58%);
   padding: 0 0.06em;
 }
 /* В тёмной теме маркер не нужен: светлый текст на жёлтом не читается (1.4:1) */
-:host-context([data-theme='dark']) ::ng-deep .hero__accent {
+:host-context([data-theme='dark']) .hero__accent {
   background-image: none;
   color: var(--accent-text);
 }
