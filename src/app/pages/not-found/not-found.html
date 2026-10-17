@@ -1,0 +1,42 @@
+<section class="section section--tight">
+  <div class="container">
+    <app-breadcrumbs [items]="breadcrumbs"></app-breadcrumbs>
+
+    <div class="not-found">
+      <p class="not-found__code" aria-hidden="true">404</p>
+      <span class="eyebrow">Ошибка 404</span>
+      <h1 class="not-found__title">Страница не найдена</h1>
+      <p class="lead lead--center not-found__lead">
+        Похоже, такой страницы нет: возможно, ссылка устарела или в адресе опечатка. Ничего
+        страшного — вот куда можно перейти.
+      </p>
+
+      <nav class="not-found__nav" aria-label="Основные разделы">
+        <ul class="not-found__list">
+          @for (item of links; track item.label) {
+            <li>
+              <a class="not-found__link" [routerLink]="item.route" [fragment]="item.fragment">{{
+                item.label
+              }}</a>
+            </li>
+          }
+        </ul>
+      </nav>
+
+      <p class="not-found__actions">
+        <a class="btn btn--primary" routerLink="/" fragment="contact">Обсудить проект</a>
+        <a class="btn btn--ghost" routerLink="/">На главную</a>
+      </p>
+
+      <p class="muted not-found__hint">
+        Не нашли нужное? Напишите на
+        <a class="prose__link" [href]="'mailto:' + contacts.email">{{ contacts.email }}</a>
+        или в Telegram
+        <a class="prose__link" [href]="contacts.telegramUrl" target="_blank" rel="noopener">{{
+          contacts.telegramHandle
+        }}</a
+        >.
+      </p>
+    </div>
+  </div>
+</section>

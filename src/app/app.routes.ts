@@ -43,17 +43,19 @@ export const routes: Routes = [
     },
     loadComponent: () => import('./pages/school/school').then((m) => m.School),
   },
-  {
-    path: 'blog',
-    title: 'Блог о веб-разработке — статьи и разборы | web33',
-    data: {
-      description:
-        'Практичные статьи о разработке сайтов, выборе CMS, скорости загрузки, поддержке проектов и обучении программированию. Без воды и маркетингового шума.',
-    },
-    loadComponent: () => import('./pages/blog/blog').then((m) => m.Blog),
-  },
+  // TODO: реализуем позже
+  // {
+  //   path: 'blog',
+  //   title: 'Блог о веб-разработке — статьи и разборы | web33',
+  //   data: {
+  //     description:
+  //       'Практичные статьи о разработке сайтов, выборе CMS, скорости загрузки, поддержке проектов и обучении программированию. Без воды и маркетингового шума.',
+  //   },
+  //   loadComponent: () => import('./pages/blog/blog').then((m) => m.Blog),
+  // },
   {
     path: 'blog/:slug',
+    canMatch: [(_route, segments) => BLOG_POSTS.some((post) => post.slug === segments[1]?.path)],
     title: (route) => {
       const post = BLOG_POSTS.find((p) => p.slug === route.paramMap.get('slug'));
       return post ? `${post.title} | web33` : 'Блог о веб-разработке — статьи и разборы | web33';
@@ -70,5 +72,13 @@ export const routes: Routes = [
     },
     loadComponent: () => import('./pages/privacy/privacy').then((m) => m.Privacy),
   },
-  { path: '**', redirectTo: '' },
+  {
+    path: '**',
+    title: 'Страница не найдена — web33',
+    data: {
+      description:
+        'Такой страницы нет: возможно, ссылка устарела или в адресе опечатка. Перейдите к услугам, кейсам, обучению или напишите напрямую.',
+    },
+    loadComponent: () => import('./pages/not-found/not-found').then((m) => m.NotFound),
+  },
 ];
