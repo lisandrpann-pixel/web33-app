@@ -153,12 +153,22 @@
   background: var(--bg);
   padding: var(--space-5);
   transform: translateX(100%);
-  transition: transform var(--t) var(--ease);
+  /* Пока меню закрыто — visibility: hidden убирает его из порядка табуляции
+     и из дерева доступности. Задержка скрытия = --t, чтобы успела
+     проиграть анимация выезда при закрытии. */
+  visibility: hidden;
+  transition:
+    transform var(--t) var(--ease),
+    visibility 0s linear var(--t);
   z-index: 55;
   overflow-y: auto;
 }
 .mobile-nav--open {
   transform: translateX(0);
+  visibility: visible;
+  transition:
+    transform var(--t) var(--ease),
+    visibility 0s;
 }
 .mobile-nav__list {
   list-style: none;

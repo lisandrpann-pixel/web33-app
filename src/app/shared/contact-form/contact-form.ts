@@ -1,8 +1,26 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  effect,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ContactFormConfig } from './contact-form.model';
+import {
+  ContactFormConfig,
+  ContactFormPayload,
+  ContactFormResponse,
+  ContactFormState,
+} from './contact-form.model';
+
+/** PHP-обработчик из public/api/send.php (см. файл — отправка через mail()). */
+const ENDPOINT = '/api/send.php';
 
 @Component({
   selector: 'app-contact-form',
@@ -14,6 +32,8 @@ import { ContactFormConfig } from './contact-form.model';
 export class ContactForm {
   private readonly doc = inject(DOCUMENT);
   private readonly fb = inject(NonNullableFormBuilder);
+  private readonly http = inject(HttpClient);
+  private readonly destroyRef = inject(DestroyRef);
 
   readonly config = input.required<ContactFormConfig>();
 
@@ -23,9 +43,10 @@ export class ContactForm {
     task: [''],
     message: [''],
     consent: [false, Validators.requiredTrue],
+    website: [''],
   });
 
-  protected readonly success = signal(false);
+  protected readonly state = signal<ContactFormState>('idle');
 
   protected nameInvalid(): boolean {
     const control = this.form.controls.name;
@@ -41,7 +62,14 @@ export class ContactForm {
     effect(() => {
       const [firstOption] = this.config().taskOptions;
       if (firstOption && !this.form.controls.task.value) {
-        this.form.controls.task.setValue(firstOption);
+        this.form.controls.task.setValue(firstOption, { emitEvent: false });
+      }
+    });
+
+    /* Любое редактирование после отправки скрывает прошлый результат. */
+    this.form.valueChanges.pipe(takeUntilDestroyed()).subscribe(() => {
+      if (this.state() !== 'sending') {
+        this.state.set('idle');
       }
     });
   }
@@ -53,19 +81,42 @@ export class ContactForm {
   protected submit(): void {
     this.form.markAllAsTouched();
 
+    if (this.state() === 'sending') {
+      return;
+    }
+
     if (this.form.invalid) {
+      this.state.set('idle');
       this.focusFirstError();
       return;
     }
 
-    this.success.set(true);
-    this.form.reset({
-      name: '',
-      contact: '',
-      task: this.config().taskOptions[0] ?? '',
-      message: '',
-      consent: false,
-    });
+    const payload: ContactFormPayload = {
+      ...this.form.getRawValue(),
+      page: this.doc.defaultView?.location?.pathname ?? '/',
+    };
+
+    this.state.set('sending');
+    this.http
+      .post<ContactFormResponse>(ENDPOINT, payload)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: () => {
+          this.state.set('success');
+          this.form.reset(
+            {
+              name: '',
+              contact: '',
+              task: this.config().taskOptions[0] ?? '',
+              message: '',
+              consent: false,
+              website: '',
+            },
+            { emitEvent: false },
+          );
+        },
+        error: () => this.state.set('error'),
+      });
   }
 
   private focusFirstError(): void {

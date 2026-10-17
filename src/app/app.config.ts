@@ -1,3 +1,4 @@
+import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
 import {
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
         scrollPositionRestoration: 'enabled',
       }),
     ),
+    provideHttpClient(),
     { provide: TitleStrategy, useClass: AppTitleStrategy },
     provideClientHydration(),
   ],

@@ -99,6 +99,28 @@
 .form__success--visible {
   display: block;
 }
+.form__error-box {
+  background: #fdecec;
+  border: 1px solid #f5c2c0;
+  color: #b42318;
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-4);
+  font-size: 0.92rem;
+}
+/* Honeypot: поле скрыто от людей, но доступно ботам-спамерам */
+.form__hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
 
 @media (max-width: 640px) {
   .form {

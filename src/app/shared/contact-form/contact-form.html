@@ -1,9 +1,28 @@
-<form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
-  @if (success()) {
+<form
+  class="form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  [attr.aria-busy]="state() === 'sending'"
+  novalidate
+>
+  @if (state() === 'success') {
     <div class="form__success form__success--visible" role="status">
       Спасибо! Заявка отправлена — свяжусь с вами в течение 2 часов.
     </div>
   }
+  @if (state() === 'error') {
+    <div class="form__error-box" role="alert">
+      Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз или напишите на почту /
+      в Telegram.
+    </div>
+  }
+
+  <div class="form__hp" aria-hidden="true">
+    <label>
+      Не заполняйте это поле
+      <input type="text" formControlName="website" tabindex="-1" autocomplete="off" />
+    </label>
+  </div>
 
   <div class="form__field" [class.form__field--error]="nameInvalid()">
     <label class="form__label" [attr.for]="id('name')">Как вас зовут</label>
@@ -12,6 +31,7 @@
       [id]="id('name')"
       formControlName="name"
       type="text"
+      autocomplete="name"
       [attr.placeholder]="config().namePlaceholder"
     />
     <span class="form__error">Укажите имя</span>
@@ -24,6 +44,7 @@
       [id]="id('contact')"
       formControlName="contact"
       type="text"
+      autocomplete="email"
       placeholder="you@mail.ru или @username"
     />
     <span class="form__error">Оставьте контакт для связи</span>
@@ -57,8 +78,12 @@
     >
   </label>
 
-  <button class="btn btn--primary btn--block btn--lg" type="submit">
-    {{ config().submitLabel }}
+  <button
+    class="btn btn--primary btn--block btn--lg"
+    type="submit"
+    [disabled]="state() === 'sending'"
+  >
+    {{ state() === 'sending' ? 'Отправляю…' : config().submitLabel }}
   </button>
   <p class="form__note">Не передаю ваши данные третьим лицам и не рассылаю спам.</p>
 </form>
