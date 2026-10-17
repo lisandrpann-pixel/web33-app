@@ -1,7 +1,8 @@
 import { Component, computed, effect, inject, input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { BLOG_POSTS } from '../../data/blog.data';
-import { Breadcrumb, Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
+import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-blog-post',

@@ -1,11 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-export interface Breadcrumb {
-  label: string;
-  route?: string;
-  fragment?: string;
-}
+import { Breadcrumb } from './breadcrumbs.model';
 
 @Component({
   selector: 'app-breadcrumbs',

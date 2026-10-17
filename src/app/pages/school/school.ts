@@ -18,12 +18,12 @@ import { SectionHead } from '../../shared/section-head/section-head';
 import { ServiceCard } from '../../shared/service-card/service-card';
 
 @Component({
-  selector: 'app-obuchenie',
-  templateUrl: './obuchenie.html',
+  selector: 'app-school',
+  templateUrl: './school.html',
   styles: [':host { display: contents; }'],
   imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta],
 })
-export class Obuchenie {
+export class School {
   protected readonly hero = TRAINING_HERO;
   protected readonly forWhom = TRAINING_FOR_WHOM;
   protected readonly programs = TRAINING_PROGRAMS;

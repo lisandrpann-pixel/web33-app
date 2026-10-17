@@ -1,7 +1,6 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, computed, inject, signal } from '@angular/core';
-
-export type Theme = 'light' | 'dark';
+import { Theme } from './theme.model';
 
 const THEME_KEY = 'web33-theme';
 

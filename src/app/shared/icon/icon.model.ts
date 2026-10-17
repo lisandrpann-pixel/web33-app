@@ -1,0 +1,16 @@
+export type IconName =
+  | 'check'
+  | 'clock'
+  | 'shield'
+  | 'laptop'
+  | 'chart'
+  | 'chat'
+  | 'play'
+  | 'window'
+  | 'bulb'
+  | 'graduation'
+  | 'code'
+  | 'sun'
+  | 'moon'
+  | 'mail'
+  | 'telegram';

@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ServiceCta } from '../service-card/service-card';
+import { ServiceCta } from '../service-card/service-card.model';
 
 @Component({
   selector: 'app-outro',

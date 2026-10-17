@@ -1,16 +1,5 @@
 import { Component, input } from '@angular/core';
-
-export interface StackChip {
-  abbr: string;
-  name: string;
-  bg: string;
-  color?: string;
-}
-
-export interface StackGroup {
-  title: string;
-  items: StackChip[];
-}
+import { StackGroup } from './stack.model';
 
 @Component({
   selector: 'app-stack',

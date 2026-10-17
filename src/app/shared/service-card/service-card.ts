@@ -1,21 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-
-export interface ServicePkg {
-  title: string;
-  price: string;
-  priceNote?: string;
-  meta: string;
-  items: string[];
-  featured?: boolean;
-  tag?: string;
-}
-
-export interface ServiceCta {
-  label: string;
-  route: string;
-  fragment?: string;
-}
+import { ServiceCta, ServicePkg } from './service-card.model';
 
 export const DEFAULT_SERVICE_CTA: ServiceCta = {
   label: 'Заказать',

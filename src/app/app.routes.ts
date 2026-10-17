@@ -35,13 +35,13 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/about/about').then((m) => m.About),
   },
   {
-    path: 'obuchenie',
+    path: 'school',
     title: 'Обучение веб-программированию и Game Dev для детей и взрослых | web33',
     data: {
       description:
         'Индивидуальные и групповые занятия по веб-программированию и Game Dev. Больше практики: на каждом уроке пишем код, каждый модуль заканчивается мини-проектом. От 1 500 ₽/час.',
     },
-    loadComponent: () => import('./pages/obuchenie/obuchenie').then((m) => m.Obuchenie),
+    loadComponent: () => import('./pages/school/school').then((m) => m.School),
   },
   {
     path: 'blog',

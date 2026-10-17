@@ -1,9 +1,9 @@
-import { ContactCtaData } from '../shared/contact-cta/contact-cta';
-import { FaqItem } from '../shared/faq/faq';
-import { FeatureItem } from '../shared/feature/feature';
-import { HeroData } from '../shared/hero/hero';
-import { InfoCardData } from '../shared/info-card/info-card';
-import { ServiceCta, ServicePkg } from '../shared/service-card/service-card';
+import { ContactCtaData } from '../shared/contact-cta/contact-cta.model';
+import { FaqItem } from '../shared/faq/faq.model';
+import { FeatureItem } from '../shared/feature/feature.model';
+import { HeroData } from '../shared/hero/hero.model';
+import { InfoCardData } from '../shared/info-card/info-card.model';
+import { ServiceCta, ServicePkg } from '../shared/service-card/service-card.model';
 
 export const TRAINING_HERO: HeroData = {
   eyebrow: 'Обучение · дети и взрослые',
@@ -18,11 +18,11 @@ export const TRAINING_HERO: HeroData = {
   actions: [
     {
       label: 'Записаться на занятие',
-      route: '/obuchenie',
+      route: '/school',
       fragment: 'contact',
       variant: 'primary',
     },
-    { label: 'Программы и цены', route: '/obuchenie', fragment: 'programs', variant: 'ghost' },
+    { label: 'Программы и цены', route: '/school', fragment: 'programs', variant: 'ghost' },
   ],
   trust: ['10+ лет в разработке', 'Дети от 8 лет и взрослые', 'Пробное занятие'],
   card: {
@@ -33,7 +33,7 @@ export const TRAINING_HERO: HeroData = {
       { label: 'Мини-группа (2–4 чел.)', value: 'от 800 ₽/ч', badge: true },
       { label: 'Мастер-класс', value: 'по запросу', badge: true },
     ],
-    button: { label: 'Записаться', route: '/obuchenie', fragment: 'contact' },
+    button: { label: 'Записаться', route: '/school', fragment: 'contact' },
     hint: 'Онлайн или очно · подберём удобное время',
   },
 };
@@ -58,7 +58,7 @@ export const TRAINING_FOR_WHOM: InfoCardData[] = [
 
 export const PROGRAM_CTA: ServiceCta = {
   label: 'Хочу учиться',
-  route: '/obuchenie',
+  route: '/school',
   fragment: 'contact',
 };
 

@@ -1,9 +1,5 @@
 import { Component, input } from '@angular/core';
-
-export interface FaqItem {
-  q: string;
-  a: string;
-}
+import { FaqItem } from './faq.model';
 
 @Component({
   selector: 'app-faq',

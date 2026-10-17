@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Breadcrumb, Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
+import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-privacy',

@@ -1,11 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Icon, IconName } from '../icon/icon';
-
-export interface FeatureItem {
-  icon: IconName;
-  title: string;
-  text: string;
-}
+import { Icon } from '../icon/icon';
+import { FeatureItem } from './feature.model';
 
 @Component({
   selector: 'app-feature',

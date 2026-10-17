@@ -4,7 +4,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { filter } from 'rxjs';
 import { ThemeService } from '../../core/theme.service';
-import { CONTACTS, NavItem, SITE_NAV, TRAINING_NAV } from '../../data/site.data';
+import { CONTACTS, SITE_NAV, TRAINING_NAV } from '../../data/site.data';
+import { NavItem } from '../../data/site.model';
 import { Icon } from '../icon/icon';
 
 @Component({
@@ -23,19 +24,19 @@ export class Header {
   readonly menuOpen = signal(false);
   readonly isDark = this.theme.isDark;
 
-  private readonly trainingMode = signal(this.router.url.startsWith('/obuchenie'));
+  private readonly trainingMode = signal(this.router.url.startsWith('/school'));
 
   readonly nav = computed<NavItem[]>(() => (this.trainingMode() ? TRAINING_NAV : SITE_NAV));
 
   readonly cta = computed<NavItem>(() =>
     this.trainingMode()
-      ? { label: 'Записаться на занятие', route: '/obuchenie', fragment: 'contact' }
+      ? { label: 'Записаться на занятие', route: '/school', fragment: 'contact' }
       : { label: 'Обсудить проект', route: '/', fragment: 'contact' },
   );
 
   readonly mobileContact = computed<NavItem>(() =>
     this.trainingMode()
-      ? { label: 'Контакты', route: '/obuchenie', fragment: 'contact' }
+      ? { label: 'Контакты', route: '/school', fragment: 'contact' }
       : { label: 'Контакты', route: '/', fragment: 'contact' },
   );
 
@@ -46,7 +47,7 @@ export class Header {
         takeUntilDestroyed(),
       )
       .subscribe((event) => {
-        this.trainingMode.set(event.urlAfterRedirects.startsWith('/obuchenie'));
+        this.trainingMode.set(event.urlAfterRedirects.startsWith('/school'));
         this.closeMenu();
       });
   }

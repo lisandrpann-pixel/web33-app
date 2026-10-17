@@ -1,14 +1,8 @@
 import { booleanAttribute, Component, input } from '@angular/core';
 import { CONTACTS } from '../../data/site.data';
-import { ContactForm, ContactFormConfig } from '../contact-form/contact-form';
+import { ContactForm } from '../contact-form/contact-form';
 import { Icon } from '../icon/icon';
-
-export interface ContactCtaData {
-  eyebrow: string;
-  title: string;
-  lead: string;
-  form: ContactFormConfig;
-}
+import { ContactCtaData } from './contact-cta.model';
 
 @Component({
   selector: 'app-contact-cta',

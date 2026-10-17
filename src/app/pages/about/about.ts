@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Breadcrumb, Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { HeroCard, HeroCardData } from '../../shared/hero-card/hero-card';
+import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
+import { HeroCard } from '../../shared/hero-card/hero-card';
+import { HeroCardData } from '../../shared/hero-card/hero-card.model';
 
 @Component({
   selector: 'app-about',

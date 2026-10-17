@@ -1,11 +1,12 @@
-import { CaseCardData } from '../shared/case-card/case-card';
-import { ContactCtaData } from '../shared/contact-cta/contact-cta';
-import { FaqItem } from '../shared/faq/faq';
-import { FeatureItem } from '../shared/feature/feature';
-import { HeroData } from '../shared/hero/hero';
-import { Testimonial } from '../shared/quote/quote';
-import { ServicePkg } from '../shared/service-card/service-card';
-import { StackGroup } from '../shared/stack/stack';
+import { CaseCardData } from '../shared/case-card/case-card.model';
+import { ContactCtaData } from '../shared/contact-cta/contact-cta.model';
+import { FaqItem } from '../shared/faq/faq.model';
+import { FeatureItem } from '../shared/feature/feature.model';
+import { HeroData } from '../shared/hero/hero.model';
+import { Testimonial } from '../shared/quote/quote.model';
+import { ServicePkg } from '../shared/service-card/service-card.model';
+import { StackGroup } from '../shared/stack/stack.model';
+import { Step } from './home.model';
 
 export const HOME_HERO: HeroData = {
   eyebrow: 'Веб-разработка полного цикла · 10+ лет',
@@ -79,11 +80,6 @@ export const HOME_SERVICES: ServicePkg[] = [
     ],
   },
 ];
-
-export interface Step {
-  title: string;
-  text: string;
-}
 
 export const HOME_STEPS: Step[] = [
   {

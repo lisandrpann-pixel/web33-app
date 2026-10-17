@@ -1,5 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Breadcrumb, Breadcrumbs } from '../breadcrumbs/breadcrumbs';
+import { Breadcrumbs } from '../breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-page-head',

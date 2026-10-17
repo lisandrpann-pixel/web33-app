@@ -2,16 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { Component, effect, inject, input, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-
-export interface ContactFormConfig {
-  idPrefix: string;
-  namePlaceholder: string;
-  taskLabel: string;
-  taskOptions: string[];
-  messageLabel: string;
-  messagePlaceholder: string;
-  submitLabel: string;
-}
+import { ContactFormConfig } from './contact-form.model';
 
 @Component({
   selector: 'app-contact-form',

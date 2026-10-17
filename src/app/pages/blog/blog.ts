@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { BLOG_FOOTNOTE, BLOG_PAGE, BLOG_POSTS, BlogPost } from '../../data/blog.data';
+import { BLOG_FOOTNOTE, BLOG_PAGE, BLOG_POSTS } from '../../data/blog.data';
+import { BlogPost } from '../../data/blog.model';
 import { CONTACTS } from '../../data/site.data';
-import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs';
-import { CaseCard, CaseCardData } from '../../shared/case-card/case-card';
+import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
+import { CaseCard } from '../../shared/case-card/case-card';
+import { CaseCardData } from '../../shared/case-card/case-card.model';
 import { PageHead } from '../../shared/page-head/page-head';
 
 @Component({

@@ -1,14 +1,10 @@
-export interface NavItem {
-  label: string;
-  route: string;
-  fragment?: string;
-}
+import { NavItem } from './site.model';
 
 export const SITE_NAV: NavItem[] = [
   { label: 'Услуги и цены', route: '/', fragment: 'services' },
   { label: 'Кейсы', route: '/cases' },
   { label: 'Технологии', route: '/', fragment: 'stack' },
-  { label: 'Обучение', route: '/obuchenie' },
+  { label: 'Обучение', route: '/school' },
   { label: 'Обо мне', route: '/about' },
   { label: 'Блог', route: '/blog' },
 ];
@@ -16,7 +12,7 @@ export const SITE_NAV: NavItem[] = [
 export const TRAINING_NAV: NavItem[] = [
   { label: 'Разработка', route: '/', fragment: 'services' },
   { label: 'Кейсы', route: '/cases' },
-  { label: 'Обучение', route: '/obuchenie' },
+  { label: 'Обучение', route: '/school' },
   { label: 'Обо мне', route: '/about' },
   { label: 'Блог', route: '/blog' },
 ];

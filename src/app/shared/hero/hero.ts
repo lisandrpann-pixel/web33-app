@@ -1,32 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { HeroCard, HeroCardData } from '../hero-card/hero-card';
+import { HeroCard } from '../hero-card/hero-card';
 import { Icon } from '../icon/icon';
+import { HeroData } from './hero.model';
 
 function escapeHtml(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
-
-export interface HeroTitlePart {
-  text: string;
-  accent?: boolean;
-}
-
-export interface HeroAction {
-  label: string;
-  route: string;
-  fragment?: string;
-  variant: 'primary' | 'ghost';
-}
-
-export interface HeroData {
-  eyebrow: string;
-  titleParts: HeroTitlePart[];
-  lead: string;
-  actions: HeroAction[];
-  note?: string;
-  trust: string[];
-  card: HeroCardData;
 }
 
 @Component({
