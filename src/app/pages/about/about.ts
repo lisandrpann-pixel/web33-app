@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
 import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
@@ -7,6 +7,7 @@ import { HeroCardData } from '../../shared/hero-card/hero-card.model';
 
 @Component({
   selector: 'app-about',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styles: [':host { display: contents; }'],
   imports: [RouterLink, Breadcrumbs, HeroCard],

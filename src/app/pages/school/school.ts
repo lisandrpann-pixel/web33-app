@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   PROGRAM_CTA,
   TRAINING_CONTACT,
@@ -19,6 +19,7 @@ import { ServiceCard } from '../../shared/service-card/service-card';
 
 @Component({
   selector: 'app-school',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './school.html',
   styles: [':host { display: contents; }'],
   imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta],

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BLOG_FOOTNOTE, BLOG_PAGE, BLOG_POSTS } from '../../data/blog.data';
 import { BlogPost } from '../../data/blog.model';
 import { CONTACTS } from '../../data/site.data';
@@ -9,6 +9,7 @@ import { PageHead } from '../../shared/page-head/page-head';
 
 @Component({
   selector: 'app-blog',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './blog.html',
   styles: [':host { display: contents; }'],
   imports: [PageHead, CaseCard],

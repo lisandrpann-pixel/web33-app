@@ -1,9 +1,10 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Icon } from '../icon/icon';
 import { FeatureItem } from './feature.model';
 
 @Component({
   selector: 'app-feature',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './feature.html',
   styleUrl: './feature.scss',
   imports: [Icon],

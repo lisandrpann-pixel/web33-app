@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ServiceCta, ServicePkg } from './service-card.model';
 
@@ -10,6 +10,7 @@ export const DEFAULT_SERVICE_CTA: ServiceCta = {
 
 @Component({
   selector: 'app-service-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './service-card.html',
   styleUrl: './service-card.scss',
   imports: [RouterLink],

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CASES, CASES_OUTRO, CASES_PAGE } from '../../data/cases.data';
 import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
 import { CaseCard } from '../../shared/case-card/case-card';
@@ -7,6 +7,7 @@ import { PageHead } from '../../shared/page-head/page-head';
 
 @Component({
   selector: 'app-cases',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './cases.html',
   styleUrl: './cases.scss',
   imports: [PageHead, CaseCard, Outro],

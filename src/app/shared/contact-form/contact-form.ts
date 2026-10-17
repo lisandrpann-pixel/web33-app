@@ -1,11 +1,12 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, signal } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { ContactFormConfig } from './contact-form.model';
 
 @Component({
   selector: 'app-contact-form',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.scss',
   imports: [ReactiveFormsModule, RouterLink],

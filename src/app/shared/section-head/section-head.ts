@@ -1,7 +1,8 @@
-import { booleanAttribute, Component, input } from '@angular/core';
+import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-section-head',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './section-head.html',
   styleUrl: './section-head.scss',
 })

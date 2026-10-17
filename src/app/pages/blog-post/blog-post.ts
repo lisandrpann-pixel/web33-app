@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { BLOG_POSTS } from '../../data/blog.data';
 import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
@@ -6,6 +6,7 @@ import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-blog-post',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './blog-post.html',
   styles: [':host { display: contents; }'],
   imports: [RouterLink, Breadcrumbs],

@@ -1,10 +1,11 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Avatar } from '../avatar/avatar';
 import { HeroCardData } from './hero-card.model';
 
 @Component({
   selector: 'app-hero-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero-card.html',
   styleUrl: './hero-card.scss',
   imports: [RouterLink, Avatar],

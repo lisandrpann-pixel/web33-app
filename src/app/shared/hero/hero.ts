@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { HeroCard } from '../hero-card/hero-card';
 import { Icon } from '../icon/icon';
@@ -10,6 +10,7 @@ function escapeHtml(value: string): string {
 
 @Component({
   selector: 'app-hero',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
   imports: [RouterLink, Icon, HeroCard],
