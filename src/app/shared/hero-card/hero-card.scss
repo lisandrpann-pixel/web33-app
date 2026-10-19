@@ -8,6 +8,9 @@
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   padding: var(--space-5);
+  position: sticky;
+  top: var(--space-9);
+  align-self: self-start;
 }
 .hero-card__title {
   margin-bottom: var(--space-3);

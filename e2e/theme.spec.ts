@@ -3,6 +3,11 @@ import { gotoApp } from './app';
 
 const THEME_KEY = 'web33-theme';
 
+test('по умолчанию открывается тёмная тема', async ({ page }) => {
+  await gotoApp(page);
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+});
+
 test('клик по кнопке меняет атрибут data-theme', async ({ page }) => {
   await gotoApp(page);
   const btn = page.locator('.theme-toggle').first();

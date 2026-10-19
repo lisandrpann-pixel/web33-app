@@ -4,6 +4,9 @@ import { Theme } from './theme.model';
 
 const THEME_KEY = 'web33-theme';
 
+/** Тема по умолчанию, пока пользователь не выбрал свою. */
+const DEFAULT_THEME: Theme = 'dark';
+
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly doc = inject(DOCUMENT);
@@ -16,15 +19,6 @@ export class ThemeService {
 
   constructor() {
     this.apply(this.themeState(), false);
-
-    if (this.isBrowser && typeof window.matchMedia === 'function') {
-      const media = window.matchMedia('(prefers-color-scheme: dark)');
-      media.addEventListener?.('change', (event) => {
-        if (!this.readSavedTheme()) {
-          this.apply(event.matches ? 'dark' : 'light', false);
-        }
-      });
-    }
   }
 
   toggle(): void {
@@ -42,19 +36,11 @@ export class ThemeService {
 
   private readInitialTheme(): Theme {
     if (!this.isBrowser) {
-      return 'light';
+      return DEFAULT_THEME;
     }
 
     const saved = this.readSavedTheme();
-    if (saved === 'light' || saved === 'dark') {
-      return saved;
-    }
-
-    if (typeof window.matchMedia !== 'function') {
-      return 'light';
-    }
-
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return saved === 'light' || saved === 'dark' ? saved : DEFAULT_THEME;
   }
 
   private apply(theme: Theme, persist: boolean): void {

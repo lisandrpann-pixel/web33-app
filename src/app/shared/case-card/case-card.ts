@@ -12,4 +12,6 @@ import { CaseCardData } from './case-card.model';
 })
 export class CaseCard {
   readonly data = input.required<CaseCardData>();
+
+  readonly imgCover = input<boolean>();
 }

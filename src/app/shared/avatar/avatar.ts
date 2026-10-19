@@ -5,6 +5,8 @@ import { ChangeDetectionStrategy, Component, computed, input } from '@angular/co
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './avatar.html',
   styleUrl: './avatar.scss',
+  /* Аватар чисто декоративный: скрыт от скринридеров (host + <img role="presentation">),
+     а файлы лежат в /img/avatars/ и закрыты от индексации (robots.txt + X-Robots-Tag). */
   host: {
     class: 'avatar',
     '[class.avatar--lg]': "size() === 'lg'",

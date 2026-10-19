@@ -7,17 +7,17 @@
     <title>Разработка сайтов, магазинов и веб-приложений под ключ — web33</title>
     <meta
       name="description"
-      content="Разработаю сайт, интернет-магазин или веб-приложение под ключ: от брифа до запуска. Лендинги от 3 дней и от 3 000 ₽, поддержка от 1 000 ₽. 10+ лет в веб-разработке. Отвечаю в течение 2 часов."
+      content="Разработаю сайт, интернет-магазин или веб-приложение под ключ: от брифа до запуска. Лендинги от 3 дней и от 5 000 ₽, поддержка от 1 000 ₽. 10+ лет в веб-разработке. Отвечаю в течение 2 часов."
     />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="theme-color" content="#ffffff" />
+    <meta name="theme-color" content="#0a0f1c" />
     <script>
-      /* Тема применяется до отрисовки, чтобы не было «вспышки» неверной темы. */
+      /* Тема по умолчанию — тёмная; применяем до отрисовки, чтобы не было «вспышки» неверной темы. */
       (function () {
         try {
           var theme = localStorage.getItem('web33-theme');
           if (theme !== 'light' && theme !== 'dark') {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            theme = 'dark';
           }
           document.documentElement.setAttribute('data-theme', theme);
         } catch (e) {}

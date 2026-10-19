@@ -1,11 +1,13 @@
+@let quoteItem = quote();
+
 <blockquote class="quote">
   <div class="stars" aria-label="5 из 5">★★★★★</div>
-  <p class="quote__text">{{ quote().text }}</p>
+  <p class="quote__text">{{ quoteItem.text }}</p>
   <div class="quote__author">
-    <app-avatar [name]="quote().name" />
+    <app-avatar [name]="quoteItem.name" [imgSrc]="quoteItem.photo" />
     <span>
-      <b class="quote__name">{{ quote().name }}</b>
-      <span class="quote__role">{{ quote().role }}</span>
+      <b class="quote__name">{{ quoteItem.name }}</b>
+      <span class="quote__role">{{ quoteItem.role }}</span>
     </span>
   </div>
 </blockquote>

@@ -8,7 +8,7 @@
 <section class="section section--tight">
   <div class="container">
     @for (item of cases; track item.title) {
-      <app-case-card [data]="item"></app-case-card>
+      <app-case-card [data]="item" [imgCover]="true"></app-case-card>
     }
   </div>
 </section>

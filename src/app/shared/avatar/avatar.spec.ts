@@ -24,6 +24,8 @@ describe('Avatar', () => {
     const img = fixture.nativeElement.querySelector('img');
     expect(img).not.toBeNull();
     expect(img?.getAttribute('alt')).toBe('');
+    expect(img?.getAttribute('role')).toBe('presentation');
+    expect(img?.getAttribute('aria-hidden')).toBe('true');
   });
 
   it('фолбэк на первую букву имени (большая)', () => {

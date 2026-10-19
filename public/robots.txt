@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+# Фото из компонента Avatar — не индексируем (Google Images и т.п.)
+Disallow: /img/avatars/
+# Служебный обработчик формы — индексировать нечего
+Disallow: /api/
 
 Sitemap: https://web33.ru/sitemap.xml

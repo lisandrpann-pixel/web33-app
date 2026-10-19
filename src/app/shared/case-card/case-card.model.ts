@@ -4,8 +4,7 @@ export interface CaseCardResult {
 }
 
 export interface CaseCardMedia {
-  text: string;
-  variant?: 'b' | 'c';
+  photo: string;
   tall?: boolean;
 }
 

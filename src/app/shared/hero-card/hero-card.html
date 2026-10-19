@@ -1,7 +1,7 @@
 <aside class="hero-card" [attr.aria-label]="card().title ?? 'С чего начать'">
   @if (card().person; as person) {
     <div class="hero-card__person">
-      <app-avatar [name]="person.name" imgSrc="img/about.jpeg" size="lg" />
+      <app-avatar [name]="person.name" imgSrc="img/avatars/about.jpeg" size="lg" />
       <div>
         <b class="hero-card__person-name">{{ person.name }}</b>
         <div class="hero-card__person-role">{{ person.role }}</div>

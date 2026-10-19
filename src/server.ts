@@ -32,6 +32,13 @@ app.use(
     maxAge: '1y',
     index: false,
     redirect: false,
+    setHeaders: (res, filePath) => {
+      /* Фото из компонента Avatar не должны попадать в поиск (Google Images и т.п.).
+         Дополнительно к Disallow в robots.txt отдаём запрет заголовком. */
+      if (/[\\/]img[\\/]avatars[\\/]/.test(filePath)) {
+        res.setHeader('X-Robots-Tag', 'noindex, noimageindex');
+      }
+    },
   }),
 );
 

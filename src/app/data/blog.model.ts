@@ -14,7 +14,7 @@ export interface BlogPost {
   slug: string;
   category: string;
   readTime: string;
-  media: { text: string; variant?: 'b' | 'c' };
+  media: { photo: string; };
   title: string;
   excerpt: string;
   eyebrow: string;
