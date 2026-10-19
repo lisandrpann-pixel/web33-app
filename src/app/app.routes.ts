@@ -1,5 +1,9 @@
-import { ResolveFn, Routes } from '@angular/router';
+import { CanMatchFn, ResolveFn, Routes } from '@angular/router';
 import { BLOG_POSTS } from './data/blog.data';
+
+/** Пропускает только известные slug'и блога; остальное уходит на ** → 404. */
+export const canMatchKnownBlogSlug: CanMatchFn = (_route, segments) =>
+  BLOG_POSTS.some((post) => post.slug === segments[1]?.path);
 
 const blogDescription: ResolveFn<string> = (route) => {
   const post = BLOG_POSTS.find((p) => p.slug === route.paramMap.get('slug'));
@@ -55,7 +59,7 @@ export const routes: Routes = [
   // },
   {
     path: 'blog/:slug',
-    canMatch: [(_route, segments) => BLOG_POSTS.some((post) => post.slug === segments[1]?.path)],
+    canMatch: [canMatchKnownBlogSlug],
     title: (route) => {
       const post = BLOG_POSTS.find((p) => p.slug === route.paramMap.get('slug'));
       return post ? `${post.title} | web33` : 'Блог о веб-разработке — статьи и разборы | web33';

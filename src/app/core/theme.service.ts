@@ -20,7 +20,7 @@ export class ThemeService {
     if (this.isBrowser && typeof window.matchMedia === 'function') {
       const media = window.matchMedia('(prefers-color-scheme: dark)');
       media.addEventListener?.('change', (event) => {
-        if (!localStorage.getItem(THEME_KEY)) {
+        if (!this.readSavedTheme()) {
           this.apply(event.matches ? 'dark' : 'light', false);
         }
       });
@@ -31,12 +31,21 @@ export class ThemeService {
     this.apply(this.themeState() === 'dark' ? 'light' : 'dark', true);
   }
 
+  /** Приватный режим может бросать и на чтении, и на записи — не роняем приложение. */
+  private readSavedTheme(): string | null {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch {
+      return null;
+    }
+  }
+
   private readInitialTheme(): Theme {
     if (!this.isBrowser) {
       return 'light';
     }
 
-    const saved = localStorage.getItem(THEME_KEY);
+    const saved = this.readSavedTheme();
     if (saved === 'light' || saved === 'dark') {
       return saved;
     }

@@ -4,7 +4,6 @@ import { Avatar } from './avatar';
 
 describe('Avatar', () => {
   let fixture: ComponentFixture<Avatar>;
-  let component: Avatar;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -16,36 +15,32 @@ describe('Avatar', () => {
       .compileComponents();
 
     fixture = TestBed.createComponent(Avatar);
-    component = fixture.componentInstance;
   });
 
-  it('рендерит <img> если есть imgSrc', () => {
+  it('рендерит <img> если есть imgSrc (декоративный, alt пустой)', () => {
     fixture.componentRef.setInput('name', 'Иван');
     fixture.componentRef.setInput('imgSrc', '/img/test.jpg');
     fixture.detectChanges();
     const img = fixture.nativeElement.querySelector('img');
     expect(img).not.toBeNull();
+    expect(img?.getAttribute('alt')).toBe('');
   });
 
   it('фолбэк на первую букву имени (большая)', () => {
     fixture.componentRef.setInput('name', 'алексей');
     fixture.detectChanges();
-    const span = fixture.nativeElement.querySelector('.avatar__fallback');
-    expect(span?.textContent).toBe('А');
+    expect(fixture.nativeElement.textContent?.trim()).toBe('А');
   });
 
   it('пустой name → пустая заглавная заглушка', () => {
     fixture.componentRef.setInput('name', '');
     fixture.detectChanges();
-    const span = fixture.nativeElement.querySelector('.avatar__fallback');
-    expect(span?.textContent).toBe('');
+    expect(fixture.nativeElement.textContent?.trim()).toBe('');
   });
 
-  it('применяет alt из name', () => {
+  it('аватар скрыт от скринридеров (aria-hidden)', () => {
     fixture.componentRef.setInput('name', 'Мария');
-    fixture.componentRef.setInput('imgSrc', '/img/m.jpg');
     fixture.detectChanges();
-    const img = fixture.nativeElement.querySelector('img');
-    expect(img?.getAttribute('alt')).toBe('Мария');
+    expect(fixture.nativeElement.getAttribute('aria-hidden')).toBe('true');
   });
 });

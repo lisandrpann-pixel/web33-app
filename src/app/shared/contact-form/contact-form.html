@@ -74,13 +74,23 @@
     ></textarea>
   </div>
 
-  <label class="form__consent">
-    <input class="form__checkbox" type="checkbox" formControlName="consent" />
-    <span
-      >Согласен на обработку персональных данных и принимаю
-      <a class="form__link" routerLink="/privacy">политику конфиденциальности</a>.</span
-    >
-  </label>
+  <div class="form__field" [class.form__field--error]="agreeInvalid()">
+    <label class="form__consent">
+      <input
+        class="form__checkbox"
+        type="checkbox"
+        formControlName="consent"
+        [id]="id('agree')"
+        [attr.aria-invalid]="agreeInvalid()"
+        [attr.aria-describedby]="agreeInvalid() ? id('agree-error') : null"
+      />
+      <span
+        >Согласен на обработку персональных данных и принимаю
+        <a class="form__link" routerLink="/privacy">политику конфиденциальности</a>.</span
+      >
+    </label>
+    <span class="form__error" [id]="id('agree-error')">Нужно согласие на обработку данных</span>
+  </div>
 
   <button
     class="btn btn--primary btn--block btn--lg"

@@ -3,32 +3,38 @@ import { DOCUMENT } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { ThemeService } from './theme.service';
 
-function setMatchMedia(matches: boolean) {
-  (globalThis as any).matchMedia = (query: string) => ({
-    matches,
-    media: query,
-    addEventListener: () => {},
-    removeEventListener: () => {},
-    addListener: () => {},
-    removeListener: () => {},
-  }) as any;
+const THEME_KEY = 'web33-theme';
+
+interface MediaQueryListStub {
+  matches: boolean;
+  media: string;
+  addEventListener: (type: string, listener: (event: { matches: boolean }) => void) => void;
+  removeEventListener: () => void;
 }
 
-function clearMatchMedia() {
-  if ('matchMedia' in globalThis) {
-    delete (globalThis as any).matchMedia;
-  }
+function stubMatchMedia(matches: boolean): void {
+  const stub = (query: string): MediaQueryListStub => ({
+    matches,
+    media: query,
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
+  });
+  Object.defineProperty(globalThis, 'matchMedia', { configurable: true, value: stub });
+}
+
+function removeMatchMedia(): void {
+  Reflect.deleteProperty(globalThis, 'matchMedia');
 }
 
 describe('ThemeService', () => {
   beforeEach(() => {
-    clearMatchMedia();
+    removeMatchMedia();
     localStorage.clear();
   });
 
   it('берёт из localStorage при наличии валидного значения', () => {
-    localStorage.setItem('theme', 'dark');
-    setMatchMedia(false);
+    localStorage.setItem(THEME_KEY, 'dark');
+    stubMatchMedia(false);
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
@@ -39,8 +45,7 @@ describe('ThemeService', () => {
   });
 
   it('fallback на prefers-color-scheme: dark', () => {
-    localStorage.removeItem('theme');
-    setMatchMedia(true);
+    stubMatchMedia(true);
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
@@ -49,8 +54,7 @@ describe('ThemeService', () => {
   });
 
   it('fallback на prefers-color-scheme: light', () => {
-    localStorage.removeItem('theme');
-    setMatchMedia(false);
+    stubMatchMedia(false);
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
@@ -59,8 +63,8 @@ describe('ThemeService', () => {
   });
 
   it('игнорирует невалидное значение в localStorage', () => {
-    localStorage.setItem('theme', 'blue');
-    setMatchMedia(true);
+    localStorage.setItem(THEME_KEY, 'blue');
+    stubMatchMedia(true);
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
@@ -68,29 +72,64 @@ describe('ThemeService', () => {
     expect(service.theme()).toBe('dark');
   });
 
+  it('не падает при ошибке чтения localStorage (приватный режим)', () => {
+    stubMatchMedia(false);
+    const originalGet = localStorage.getItem;
+    localStorage.getItem = () => {
+      throw new Error('blocked');
+    };
+    TestBed.configureTestingModule({
+      providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
+    });
+    let service: ThemeService | undefined;
+    expect(() => (service = TestBed.inject(ThemeService))).not.toThrow();
+    expect(service?.theme()).toBe('light');
+    localStorage.getItem = originalGet;
+  });
+
   it('не падает при ошибке записи в localStorage (приватный режим)', () => {
-    localStorage.setItem('theme', 'dark');
-    setMatchMedia(false);
-    const origSet = localStorage.setItem;
+    stubMatchMedia(false);
+    const originalSet = localStorage.setItem;
     localStorage.setItem = () => {
       throw new Error('blocked');
     };
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
-    expect(() => TestBed.inject(ThemeService)).not.toThrow();
-    localStorage.setItem = origSet;
+    const service = TestBed.inject(ThemeService);
+    expect(() => service.toggle()).not.toThrow();
+    expect(service.theme()).toBe('dark');
+    localStorage.setItem = originalSet;
+  });
+
+  it('toggle сохраняет тему под ожидаемым ключом', () => {
+    stubMatchMedia(false);
+    TestBed.configureTestingModule({
+      providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
+    });
+    const service = TestBed.inject(ThemeService);
+    service.toggle();
+    expect(localStorage.getItem(THEME_KEY)).toBe('dark');
   });
 
   it('применяет data-theme и theme-color', () => {
-    localStorage.setItem('theme', 'light');
-    setMatchMedia(false);
+    stubMatchMedia(false);
     TestBed.configureTestingModule({
       providers: [{ provide: PLATFORM_ID, useValue: 'browser' }],
     });
     const doc = TestBed.inject(DOCUMENT);
-    const meta = doc.querySelector('meta[name="theme-color"]') as HTMLMetaElement;
+    const meta = doc.createElement('meta');
+    meta.setAttribute('name', 'theme-color');
+    doc.head.appendChild(meta);
+    const service = TestBed.inject(ThemeService);
+
     expect(doc.documentElement.getAttribute('data-theme')).toBe('light');
-    expect(meta?.getAttribute('content')).toBe('var(--bg)');
+    expect(meta.getAttribute('content')).toBe('#ffffff');
+
+    service.toggle();
+    expect(doc.documentElement.getAttribute('data-theme')).toBe('dark');
+    expect(meta.getAttribute('content')).toBe('#0a0f1c');
+
+    meta.remove();
   });
 });

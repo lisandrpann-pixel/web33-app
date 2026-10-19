@@ -26,43 +26,40 @@ describe('Header', () => {
     const btn = fixture.nativeElement.querySelector('.burger') as HTMLButtonElement;
     btn.click();
     fixture.detectChanges();
-    expect(component.menuOpen()).toBeTruthy();
+    expect(component.menuOpen()).toBe(true);
     expect(btn.getAttribute('aria-expanded')).toBe('true');
     expect(btn.getAttribute('aria-label')).toBe('Закрыть меню');
     btn.click();
     fixture.detectChanges();
-    expect(component.menuOpen()).toBeFalsy();
+    expect(component.menuOpen()).toBe(false);
     expect(btn.getAttribute('aria-expanded')).toBe('false');
     expect(btn.getAttribute('aria-label')).toBe('Открыть меню');
   });
 
-  it('закрытое меню не держит ссылки в фокусируемом таб-порядке', () => {
-    const links = fixture.nativeElement.querySelectorAll('.mobile-nav__link');
-    links.forEach((el: HTMLElement) => {
-      const tabIndex = el.getAttribute('tabindex');
-      expect(tabIndex === '-1' || tabIndex === null || tabIndex === undefined).toBeTruthy();
-    });
+  /* В юнит-тестах (jsdom) проверяем состояние классов; реальная видимость
+     и tab-порядок закрытого меню (CSS visibility) проверяются e2e в e2e/mobile-menu.spec.ts. */
+  it('закрытое меню не имеет класса mobile-nav--open', () => {
+    const nav = fixture.nativeElement.querySelector('.mobile-nav');
+    expect(nav.classList.contains('mobile-nav--open')).toBe(false);
   });
 
-  it('открытое меню делает ссылки доступными', () => {
+  it('открытое меню получает класс mobile-nav--open', () => {
     const btn = fixture.nativeElement.querySelector('.burger') as HTMLButtonElement;
     btn.click();
     fixture.detectChanges();
-    const links = fixture.nativeElement.querySelectorAll('.mobile-nav__link');
-    expect(links.length).toBeGreaterThan(0);
-    links.forEach((el: HTMLElement) => {
-      expect(el.getAttribute('tabindex')).toBeNull();
-    });
+    const nav = fixture.nativeElement.querySelector('.mobile-nav');
+    expect(nav.classList.contains('mobile-nav--open')).toBe(true);
+    expect(fixture.nativeElement.querySelectorAll('.mobile-nav__link').length).toBeGreaterThan(0);
   });
 
   it('клик по ссылке закрывает меню', () => {
     const btn = fixture.nativeElement.querySelector('.burger') as HTMLButtonElement;
     btn.click();
     fixture.detectChanges();
-    expect(component.menuOpen()).toBeTruthy();
+    expect(component.menuOpen()).toBe(true);
     const link = fixture.nativeElement.querySelector('.mobile-nav__link') as HTMLAnchorElement;
     link.click();
     fixture.detectChanges();
-    expect(component.menuOpen()).toBeFalsy();
+    expect(component.menuOpen()).toBe(false);
   });
 });

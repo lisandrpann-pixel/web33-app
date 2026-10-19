@@ -1,5 +1,8 @@
 import { NavItem } from './site.model';
 
+/** Канонический домен сайта — для canonical/og-тегов и sitemap. */
+export const SITE_URL = 'https://web33.ru';
+
 export const SITE_NAV: NavItem[] = [
   { label: 'Услуги и цены', route: '/', fragment: 'services' },
   { label: 'Кейсы', route: '/cases' },

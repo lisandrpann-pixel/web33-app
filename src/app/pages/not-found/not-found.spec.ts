@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { ChangeDetectionStrategy } from '@angular/core';
 import { NotFound } from './not-found';
 
@@ -8,6 +9,7 @@ describe('NotFound', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NotFound],
+      providers: [provideRouter([])],
     })
       .overrideComponent(NotFound, {
         set: { changeDetection: ChangeDetectionStrategy.Default },

@@ -1,8 +1,11 @@
-import { test, expect } from '@playwright/test';
+﻿import { test, expect } from '@playwright/test';
+import { gotoApp } from './app';
 
-test('переключатель темы меняет data-theme', async ({ page }) => {
-  await page.goto('/');
-  const btn = page.locator('header .theme-toggle, .theme-toggle').first();
+const THEME_KEY = 'web33-theme';
+
+test('клик по кнопке меняет атрибут data-theme', async ({ page }) => {
+  await gotoApp(page);
+  const btn = page.locator('.theme-toggle').first();
   await expect(btn).toBeVisible();
   const before = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
   await btn.click();
@@ -10,19 +13,19 @@ test('переключатель темы меняет data-theme', async ({ pag
   expect(after).not.toBe(before);
 });
 
-test('запоминает выбор в localStorage', async ({ page }) => {
-  await page.goto('/');
-  const btn = page.locator('header .theme-toggle, .theme-toggle').first();
+test('сохранённая тема персистится в localStorage', async ({ page }) => {
+  await gotoApp(page);
+  const btn = page.locator('.theme-toggle').first();
   await btn.click();
-  const theme = await page.evaluate(() => localStorage.getItem('theme'));
-  expect(theme === 'light' || theme === 'dark').toBeTruthy();
+  const theme = await page.evaluate((key) => localStorage.getItem(key), THEME_KEY);
+  expect(theme === 'light' || theme === 'dark').toBe(true);
 });
 
-test('восстанавливает сохранённую тему после перезагрузки', async ({ page }) => {
-  await page.goto('/');
-  const btn = page.locator('header .theme-toggle, .theme-toggle').first();
+test('сохранённая тема применяется после перезагрузки', async ({ page }) => {
+  await gotoApp(page);
+  const btn = page.locator('.theme-toggle').first();
   await btn.click();
-  const saved = await page.evaluate(() => localStorage.getItem('theme'));
+  const saved = await page.evaluate((key) => localStorage.getItem(key), THEME_KEY);
   await page.reload();
   const current = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
   expect(current).toBe(saved);

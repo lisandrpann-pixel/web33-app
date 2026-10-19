@@ -34,7 +34,7 @@
             "server": "src/main.server.ts",
             "outputMode": "server",
             "security": {
-              "allowedHosts": []
+              "allowedHosts": ["web33.ru", "www.web33.ru"]
             },
             "ssr": {
               "entry": "src/server.ts"

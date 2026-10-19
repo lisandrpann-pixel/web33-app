@@ -12,6 +12,10 @@ export default defineConfig({
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
+    /* Замедление шагов, чтобы глазами уследить за кликами: PWSLOWMO=400 npm run e2e:headed */
+    launchOptions: {
+      slowMo: process.env['PWSLOWMO'] ? Number(process.env['PWSLOWMO']) : 0,
+    },
   },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },

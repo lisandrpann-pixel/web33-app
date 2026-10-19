@@ -37,7 +37,7 @@ export class ContactForm {
 
   readonly config = input.required<ContactFormConfig>();
 
-  protected readonly form = this.fb.group({
+  readonly form = this.fb.group({
     name: ['', Validators.required],
     contact: ['', Validators.required],
     task: [''],
@@ -46,7 +46,7 @@ export class ContactForm {
     website: [''],
   });
 
-  protected readonly state = signal<ContactFormState>('idle');
+  readonly state = signal<ContactFormState>('idle');
 
   protected nameInvalid(): boolean {
     const control = this.form.controls.name;
@@ -55,6 +55,11 @@ export class ContactForm {
 
   protected contactInvalid(): boolean {
     const control = this.form.controls.contact;
+    return control.touched && control.invalid;
+  }
+
+  protected agreeInvalid(): boolean {
+    const control = this.form.controls.consent;
     return control.touched && control.invalid;
   }
 
@@ -78,7 +83,7 @@ export class ContactForm {
     return `${this.config().idPrefix}-${field}`;
   }
 
-  protected submit(): void {
+  submit(): void {
     this.form.markAllAsTouched();
 
     if (this.state() === 'sending') {
@@ -101,7 +106,11 @@ export class ContactForm {
       .post<ContactFormResponse>(ENDPOINT, payload)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => {
+        next: (res) => {
+          if (!res.ok) {
+            this.state.set('error');
+            return;
+          }
           this.state.set('success');
           this.form.reset(
             {
