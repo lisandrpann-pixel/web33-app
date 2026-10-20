@@ -3,9 +3,15 @@
  * Приём заявок с формы обратной связи и отправка письма на email.
  *
  * Размещение: /api/send.php (файл лежит в public/api/send.php и попадает
- * в сборку вместе со статикой). Требует настроенной на хостинге функции
- * mail() (локальный sendmail/MTA). При необходимости настройки SMTP
- * замените блок отправки ниже.
+ * в сборку вместе со статикой). Письма отправляются напрямую через SMTP
+ * Яндекса (smtp.yandex.ru, порт 465, SSL, AUTH LOGIN) — локальный mail()
+ * и почтовая служба хостинга не используются.
+ *
+ * Пароль SMTP — «пароль приложения» Яндекса (не основной пароль аккаунта):
+ * https://passport.yandex.ru/profile/security/app-passwords
+ * ВНИМАНИЕ: не публикуйте файл с реальным паролем в открытом репозитории.
+ *
+ * Клиент SMTP лежит рядом: api/smtp-mailer.php (без зависимостей/composer).
  *
  * Формат запроса: POST, application/json либо обычная форма.
  * Поля: name, contact, task, message, consent, page, website (honeypot).
@@ -13,8 +19,14 @@
  */
 declare(strict_types=1);
 
+require __DIR__ . '/smtp-mailer.php';
+
 /* ==== Настройки ==== */
-const RECIPIENT      = 'web33.dev@yandex.ru';
+const RECIPIENT   = 'web33.dev@yandex.ru'; // куда приходят заявки
+const SMTP_HOST   = 'smtp.yandex.ru';
+const SMTP_PORT   = 465;
+const SMTP_USER   = 'web33.dev@yandex.ru'; // логин SMTP — полный адрес ящика
+const SMTP_PASS   = '';                    // ← «пароль приложения» Яндекса
 const SUBJECT_PREFIX = '[web33] Заявка с сайта';
 const RATE_LIMIT_SEC = 20;    // не чаще одной заявки с одного IP
 const MAX_NAME       = 100;
@@ -128,12 +140,7 @@ if (rateLimited()) {
     respond(429, ['ok' => false, 'error' => 'Слишком часто. Попробуйте через минуту.']);
 }
 
-/* ==== Сборка письма ==== */
-$host   = $_SERVER['HTTP_HOST'] ?? 'web33.local';
-$domain = preg_replace('/^www\./', '', explode(':', $host)[0]);
-$domain = preg_replace('/[^a-z0-9.\-]/i', '', (string) $domain);
-$from   = 'no-reply@' . ($domain !== '' ? $domain : 'web33.local');
-
+/* ==== Сборка письма (SMTP-клиент сам кодирует тему и тело в UTF-8) ==== */
 $lines = [
     'Новая заявка с сайта web33',
     '',
@@ -154,27 +161,39 @@ $lines[] = 'User-Agent: ' . clean((string) ($_SERVER['HTTP_USER_AGENT'] ?? ''), 
 $lines[] = 'Дата: ' . date('d.m.Y H:i:s');
 
 $body = implode("\r\n", $lines);
-$body = chunk_split(base64_encode($body), 76, "\r\n");
 
-$subject  = '=?UTF-8?B?' . base64_encode(SUBJECT_PREFIX) . '?=';
-$fromName = '=?UTF-8?B?' . base64_encode('Заявка с сайта') . '?=';
-
-$headers = [
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding: base64',
-    'From: ' . $fromName . ' <' . $from . '>',
-    'X-Mailer: PHP/' . phpversion(),
-];
-
+$extraHeaders = [];
 if (filter_var($contact, FILTER_VALIDATE_EMAIL)) {
-    $headers[] = 'Reply-To: ' . $contact;
+    $extraHeaders[] = 'Reply-To: ' . $contact;
 }
 
-$sent = @mail(RECIPIENT, $subject, $body, implode("\r\n", $headers), '-f' . $from);
+/* ==== Отправка через SMTP Яндекса ==== */
+if (SMTP_PASS === '') {
+    respond(500, [
+        'ok' => false,
+        'error' => 'Форма временно не настроена: не задан пароль SMTP. Напишите напрямую на почту или в Telegram.',
+    ]);
+}
 
-if (!$sent) {
-    respond(500, ['ok' => false, 'error' => 'Не удалось отправить письмо. Напишите напрямую на почту или в Telegram.']);
+$mailer = new SmtpMailer(SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS);
+$smtpError = $mailer->send(SMTP_USER, RECIPIENT, SUBJECT_PREFIX, $body, $extraHeaders);
+
+/* Серверный след — смотреть в error_log хостинга. */
+error_log(sprintf(
+    '[web33 form] %s from=%s to=%s result=%s',
+    date('c'),
+    SMTP_USER,
+    RECIPIENT,
+    $smtpError ?? 'sent',
+));
+
+if ($smtpError !== null) {
+    respond(500, [
+        'ok' => false,
+        'error' => 'Не удалось отправить письмо. Напишите напрямую на почту или в Telegram.',
+        // ВРЕМЕННО для диагностики (видно в DevTools → Network → ответ POST):
+        'debug' => ['smtp_error' => $smtpError],
+    ]);
 }
 
 respond(200, ['ok' => true]);

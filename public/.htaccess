@@ -1,0 +1,40 @@
+# web33 — статическая сборка Angular на обычном (PHP-)хостинге.
+# Файл копируется в dist/browser при сборке — кладётся в корень сайта (public_html).
+
+Options -Indexes
+DirectoryIndex index.html
+
+# Несуществующие URL отдаём CSR-шеллу Angular: статус остаётся 404,
+# а роутер приложения рисует свою страницу not-found.
+ErrorDocument 404 /404.html
+
+# Скрытые файлы (.git, .env и т.п.) наружу не отдаём.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# Кэш: хэшированные бандлы (main-*.js, chunk-*.js, styles-*.css) живут год,
+# HTML перепроверяется каждый раз — после пересборки пользователь видит новую версию.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Сжатие: HTML, CSS, JS, JSON, SVG.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# --- Принудительный HTTPS ---
+# Обычно включается кнопкой в панели хостинга. Если кнопки нет — раскомментируйте:
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} !=on
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+# </IfModule>
