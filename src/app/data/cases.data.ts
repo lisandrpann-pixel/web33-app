@@ -1,4 +1,4 @@
-import { CaseCardData } from '../shared/case-card/case-card.model';
+import { CaseCardData } from '../components/case-card/case-card.model';
 
 export const CASES_PAGE = {
   eyebrow: 'Портфолио',

@@ -11,15 +11,15 @@ import {
   HOME_STEPS,
   HOME_TESTIMONIALS,
 } from '../../data/home.data';
-import { CaseCard } from '../../shared/case-card/case-card';
-import { ContactCta } from '../../shared/contact-cta/contact-cta';
-import { Faq } from '../../shared/faq/faq';
-import { Feature } from '../../shared/feature/feature';
-import { Hero } from '../../shared/hero/hero';
-import { Quote } from '../../shared/quote/quote';
-import { SectionHead } from '../../shared/section-head/section-head';
-import { ServiceCard } from '../../shared/service-card/service-card';
-import { Stack } from '../../shared/stack/stack';
+import { CaseCard } from '../../components/case-card/case-card';
+import { ContactCta } from '../../components/contact-cta/contact-cta';
+import { Faq } from '../../components/faq/faq';
+import { Feature } from '../../components/feature/feature';
+import { Hero } from '../../components/hero/hero';
+import { Review } from '../../components/review/review';
+import { SectionHead } from '../../components/section-head/section-head';
+import { ServiceCard } from '../../components/service-card/service-card';
+import { Stack } from '../../components/stack/stack';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +34,7 @@ import { Stack } from '../../shared/stack/stack';
     CaseCard,
     Stack,
     Feature,
-    Quote,
+    Review,
     Faq,
     ContactCta,
   ],

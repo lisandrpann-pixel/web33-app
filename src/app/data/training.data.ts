@@ -1,9 +1,9 @@
-import { ContactCtaData } from '../shared/contact-cta/contact-cta.model';
-import { FaqItem } from '../shared/faq/faq.model';
-import { FeatureItem } from '../shared/feature/feature.model';
-import { HeroData } from '../shared/hero/hero.model';
-import { InfoCardData } from '../shared/info-card/info-card.model';
-import { ServiceCta, ServicePkg } from '../shared/service-card/service-card.model';
+import { ContactCtaData } from '../components/contact-cta/contact-cta.model';
+import { FaqItem } from '../components/faq/faq.model';
+import { FeatureItem } from '../components/feature/feature.model';
+import { HeroData } from '../components/hero/hero.model';
+import { InfoCardData } from '../components/info-card/info-card.model';
+import { ServiceCta, ServicePkg } from '../components/service-card/service-card.model';
 
 export const TRAINING_HERO: HeroData = {
   eyebrow: 'Обучение · с 8 лет до «а как я без этого жил»',
@@ -154,7 +154,7 @@ export const TRAINING_FAQ: FaqItem[] = [
   },
   {
     q: 'Вы точно умеете учить, а не только программировать?',
-    a: 'Честно? Педагогического диплома у меня нет — только 10 лет практики и привычка объяснять коллегам, почему их код падает в пятницу. Учу ровно так, как сам хотел бы, чтобы учили меня: без терминов ради терминов.',
+    a: 'Честно? Иногда сомневаюсь, но у меня за плечами 10 лет практики и привычка объяснять коллегам, почему их код падает в пятницу. Учу ровно так, как сам хотел бы, чтобы учили меня: без терминов ради терминов.',
   },
   {
     q: 'Онлайн или очно?',

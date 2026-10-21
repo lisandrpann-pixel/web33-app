@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Avatar } from '../avatar/avatar';
-import { Testimonial } from './quote.model';
+import { Testimonial } from './review.model';
 
 @Component({
-  selector: 'app-quote',
+  selector: 'app-review',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './quote.html',
-  styleUrl: './quote.scss',
+  templateUrl: './review.html',
+  styleUrl: './review.scss',
   imports: [Avatar],
 })
-export class Quote {
-  readonly quote = input.required<Testimonial>();
+export class Review {
+  readonly review = input.required<Testimonial>();
 }

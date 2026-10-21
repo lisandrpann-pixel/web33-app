@@ -10,20 +10,21 @@ import {
   TRAINING_PROGRAMS,
 } from '../../data/training.data';
 import { CONTACTS } from '../../data/site.data';
-import { ContactCta } from '../../shared/contact-cta/contact-cta';
-import { Faq } from '../../shared/faq/faq';
-import { Feature } from '../../shared/feature/feature';
-import { Hero } from '../../shared/hero/hero';
-import { InfoCard } from '../../shared/info-card/info-card';
-import { SectionHead } from '../../shared/section-head/section-head';
-import { ServiceCard } from '../../shared/service-card/service-card';
+import { ContactCta } from '../../components/contact-cta/contact-cta';
+import { Faq } from '../../components/faq/faq';
+import { Feature } from '../../components/feature/feature';
+import { Hero } from '../../components/hero/hero';
+import { InfoCard } from '../../components/info-card/info-card';
+import { SectionHead } from '../../components/section-head/section-head';
+import { ServiceCard } from '../../components/service-card/service-card';
+import { Blockquote } from '../../components/blockquote/blockquote';
 
 @Component({
   selector: 'app-school',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './school.html',
   styleUrl: './school.scss',
-  imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta],
+  imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta, Blockquote],
 })
 export class School {
   protected readonly hero = TRAINING_HERO;

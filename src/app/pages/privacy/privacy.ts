@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
+import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../components/breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-privacy',

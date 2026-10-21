@@ -2,8 +2,8 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, afterNextRender, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { filter, take } from 'rxjs';
-import { Footer } from './shared/footer/footer';
-import { Header } from './shared/header/header';
+import { Footer } from './components/footer/footer';
+import { Header } from './components/header/header';
 
 @Component({
   selector: 'app-root',

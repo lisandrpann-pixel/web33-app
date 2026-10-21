@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CASES, CASES_OUTRO, CASES_PAGE } from '../../data/cases.data';
-import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
-import { CaseCard } from '../../shared/case-card/case-card';
-import { Outro } from '../../shared/outro/outro';
-import { PageHead } from '../../shared/page-head/page-head';
+import { Breadcrumb } from '../../components/breadcrumbs/breadcrumbs.model';
+import { CaseCard } from '../../components/case-card/case-card';
+import { Outro } from '../../components/outro/outro';
+import { PageHead } from '../../components/page-head/page-head';
 
 @Component({
   selector: 'app-cases',

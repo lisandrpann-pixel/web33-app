@@ -224,14 +224,6 @@
 .prose__link:hover {
   text-decoration-color: transparent;
 }
-.prose__quote {
-  margin: var(--space-5) 0;
-  padding: var(--space-4) var(--space-5);
-  border-left: 3px solid var(--accent);
-  background: var(--accent-soft);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  color: var(--ink-2);
-}
 .prose__code {
   background: var(--bg-soft);
   border: 1px solid var(--line);

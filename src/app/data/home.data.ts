@@ -1,11 +1,11 @@
-import { CaseCardData } from '../shared/case-card/case-card.model';
-import { ContactCtaData } from '../shared/contact-cta/contact-cta.model';
-import { FaqItem } from '../shared/faq/faq.model';
-import { FeatureItem } from '../shared/feature/feature.model';
-import { HeroData } from '../shared/hero/hero.model';
-import { Testimonial } from '../shared/quote/quote.model';
-import { ServicePkg } from '../shared/service-card/service-card.model';
-import { StackGroup } from '../shared/stack/stack.model';
+import { CaseCardData } from '../components/case-card/case-card.model';
+import { ContactCtaData } from '../components/contact-cta/contact-cta.model';
+import { FaqItem } from '../components/faq/faq.model';
+import { FeatureItem } from '../components/feature/feature.model';
+import { HeroData } from '../components/hero/hero.model';
+import { Testimonial } from '../components/review/review.model';
+import { ServicePkg } from '../components/service-card/service-card.model';
+import { StackGroup } from '../components/stack/stack.model';
 import { Step } from './home.model';
 
 export const HOME_HERO: HeroData = {

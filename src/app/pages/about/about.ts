@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
-import { HeroCard } from '../../shared/hero-card/hero-card';
-import { HeroCardData } from '../../shared/hero-card/hero-card.model';
+import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../components/breadcrumbs/breadcrumbs.model';
+import { HeroCard } from '../../components/hero-card/hero-card';
+import { HeroCardData } from '../../components/hero-card/hero-card.model';
+import { Blockquote } from '../../components/blockquote/blockquote';
 
 @Component({
   selector: 'app-about',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './about.html',
   styles: [':host { display: contents; }'],
-  imports: [RouterLink, Breadcrumbs, HeroCard],
+  imports: [RouterLink, Breadcrumbs, HeroCard, Blockquote],
 })
 export class About {
   protected readonly breadcrumbs: Breadcrumb[] = [

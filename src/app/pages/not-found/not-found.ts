@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component, inject, RESPONSE_INIT } from '@angu
 import { RouterLink } from '@angular/router';
 import { CONTACTS, SITE_NAV } from '../../data/site.data';
 import { NavItem } from '../../data/site.model';
-import { Breadcrumbs } from '../../shared/breadcrumbs/breadcrumbs';
-import { Breadcrumb } from '../../shared/breadcrumbs/breadcrumbs.model';
+import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
+import { Breadcrumb } from '../../components/breadcrumbs/breadcrumbs.model';
 
 @Component({
   selector: 'app-not-found',
