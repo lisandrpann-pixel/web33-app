@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ServiceCta } from '../service-card/service-card.model';
+import { ServiceCallToAction } from '../service-card/service-card.model';
 
 @Component({
   selector: 'app-outro',
@@ -12,5 +12,5 @@ import { ServiceCta } from '../service-card/service-card.model';
 export class Outro {
   readonly title = input.required<string>();
   readonly lead = input.required<string>();
-  readonly cta = input.required<ServiceCta>();
+  readonly callToAction = input.required<ServiceCallToAction>();
 }

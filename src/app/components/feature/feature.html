@@ -1,9 +1,11 @@
+@let featureValue = feature();
+
 <div class="feature">
   <div class="feature__ico" aria-hidden="true">
-    <app-icon [name]="feature().icon"></app-icon>
+    <app-icon [name]="featureValue.icon"></app-icon>
   </div>
   <div>
-    <h3 class="feature__title">{{ feature().title }}</h3>
-    <p class="feature__text">{{ feature().text }}</p>
+    <h3 class="feature__title">{{ featureValue.title }}</h3>
+    <p class="feature__text">{{ featureValue.text }}</p>
   </div>
 </div>

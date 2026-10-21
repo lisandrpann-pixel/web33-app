@@ -1,0 +1,39 @@
+@let dataValue = data();
+
+<section class="section" [class.section--soft]="soft()" id="contact">
+  <div class="container">
+    <div class="call-to-action">
+      <div class="call-to-action__grid">
+        <div>
+          <span class="call-to-action__eyebrow">{{ dataValue.eyebrow }}</span>
+          <h2 class="call-to-action__title">{{ dataValue.title }}</h2>
+          <p class="lead lead--inverse">{{ dataValue.lead }}</p>
+          <ul class="call-to-action__contacts">
+            <li class="call-to-action__contact">
+              <app-icon name="mail" [size]="20"></app-icon>
+              <a class="call-to-action__link" [href]="'mailto:' + contacts.email">{{
+                contacts.email
+              }}</a>
+            </li>
+            <li class="call-to-action__contact">
+              <app-icon name="telegram" [size]="20"></app-icon>
+              <a
+                class="call-to-action__link"
+                [href]="contacts.telegramUrl"
+                target="_blank"
+                rel="noopener"
+                >Telegram: {{ contacts.telegramHandle }}</a
+              >
+            </li>
+            <li class="call-to-action__contact">
+              <app-icon name="clock" [size]="20"></app-icon>
+              {{ reply() ?? defaultReply }}
+            </li>
+          </ul>
+        </div>
+
+        <app-contact-form [config]="dataValue.form"></app-contact-form>
+      </div>
+    </div>
+  </div>
+</section>

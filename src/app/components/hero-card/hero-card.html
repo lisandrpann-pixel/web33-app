@@ -1,5 +1,7 @@
-<aside class="hero-card" [attr.aria-label]="card().title ?? 'С чего начать'">
-  @if (card().person; as person) {
+@let cardValue = card();
+
+<aside class="hero-card" [attr.aria-label]="cardValue.title ?? 'С чего начать'">
+  @if (cardValue.person; as person) {
     <div class="hero-card__person">
       <app-avatar [name]="person.name" imgSrc="img/avatars/about.jpeg" size="lg" />
       <div>
@@ -8,11 +10,11 @@
       </div>
     </div>
   } @else {
-    <h3 class="hero-card__title">{{ card().title }}</h3>
-    <p class="hero-card__note">{{ card().note }}</p>
+    <h3 class="hero-card__title">{{ cardValue.title }}</h3>
+    <p class="hero-card__note">{{ cardValue.note }}</p>
   }
 
-  @for (row of card().rows; track row.label) {
+  @for (row of cardValue.rows; track row.label) {
     <div class="hero-card__row">
       <span class="hero-card__label">{{ row.label }}</span>
       <span class="hero-card__value" [class.hero-card__value--badge]="row.badge">{{
@@ -23,9 +25,9 @@
 
   <a
     class="btn btn--primary btn--block hero-card__btn"
-    [routerLink]="card().button.route"
-    [fragment]="card().button.fragment"
-    >{{ card().button.label }}</a
+    [routerLink]="cardValue.button.route"
+    [fragment]="cardValue.button.fragment"
+    >{{ cardValue.button.label }}</a
   >
-  <p class="hero-card__hint">{{ card().hint }}</p>
+  <p class="hero-card__hint">{{ cardValue.hint }}</p>
 </aside>

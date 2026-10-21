@@ -1,9 +1,9 @@
-import { ContactCtaData } from '../components/contact-cta/contact-cta.model';
+import { ContactCallToActionData } from '../components/contact-call-to-action/contact-call-to-action.model';
 import { FaqItem } from '../components/faq/faq.model';
 import { FeatureItem } from '../components/feature/feature.model';
 import { HeroData } from '../components/hero/hero.model';
 import { InfoCardData } from '../components/info-card/info-card.model';
-import { ServiceCta, ServicePkg } from '../components/service-card/service-card.model';
+import { ServiceCallToAction, ServicePkg } from '../components/service-card/service-card.model';
 
 export const TRAINING_HERO: HeroData = {
   eyebrow: 'Обучение · с 8 лет до «а как я без этого жил»',
@@ -68,7 +68,7 @@ export const TRAINING_NOTE: string =
   'Это один разработчик, который решил учить тому, что умеет сам, — без корпоративного ' +
   '«вы погрузитесь в экосистему». Зато если что-то сломается в вашем коде, отвечать буду я, а не безликий отдел.';
 
-export const PROGRAM_CTA: ServiceCta = {
+export const PROGRAM_CALL_TO_ACTION: ServiceCallToAction = {
   label: 'Хочу учиться',
   route: '/school',
   fragment: 'contact',
@@ -162,7 +162,7 @@ export const TRAINING_FAQ: FaqItem[] = [
   },
 ];
 
-export const TRAINING_CONTACT: ContactCtaData = {
+export const TRAINING_CONTACT: ContactCallToActionData = {
   eyebrow: 'Запись',
   title: 'Оставьте заявку — дальше разберёмся вместе',
   lead:

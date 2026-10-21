@@ -1,5 +1,5 @@
 import { CaseCardData } from '../components/case-card/case-card.model';
-import { ContactCtaData } from '../components/contact-cta/contact-cta.model';
+import { ContactCallToActionData } from '../components/contact-call-to-action/contact-call-to-action.model';
 import { FaqItem } from '../components/faq/faq.model';
 import { FeatureItem } from '../components/feature/feature.model';
 import { HeroData } from '../components/hero/hero.model';
@@ -259,7 +259,7 @@ export const HOME_FAQ: FaqItem[] = [
   },
 ];
 
-export const HOME_CONTACT: ContactCtaData = {
+export const HOME_CONTACT: ContactCallToActionData = {
   eyebrow: 'Контакты',
   title: 'Обсудим вашу задачу',
   lead: 'Опишите проект — вернусь с решением, ценой и сроком. Первая консультация бесплатна и ни к чему не обязывает, кроме, возможно, дружбы.',

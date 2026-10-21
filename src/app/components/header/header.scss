@@ -25,7 +25,7 @@
   gap: var(--space-3);
   flex-shrink: 0;
 }
-.site-header__cta {
+.site-header__call-to-action {
   flex-shrink: 0;
 }
 
@@ -191,7 +191,7 @@
 
 @media (max-width: 1024px) {
   /* В шапку логотип + меню + кнопка уже не помещаются — прячем кнопку */
-  .site-header__cta {
+  .site-header__call-to-action {
     display: none;
   }
 }

@@ -1,16 +1,23 @@
+@let stateValue = state();
+@let isStateSending = stateValue === 'sending';
+@let nameInvalidValue = nameInvalid();
+@let agreeInvalidValue = agreeInvalid();
+@let contactInvalidValue = contactInvalid();
+@let configValue = config();
+
 <form
   class="form"
   [formGroup]="form"
   (ngSubmit)="submit()"
-  [attr.aria-busy]="state() === 'sending'"
+  [attr.aria-busy]="isStateSending"
   novalidate
 >
-  @if (state() === 'success') {
+  @if (stateValue === 'success') {
     <div class="form__success form__success--visible" role="status">
       Спасибо! Заявка отправлена — свяжусь с вами в течение 2 часов.
     </div>
   }
-  @if (state() === 'error') {
+  @if (stateValue === 'error') {
     <div class="form__error-box" role="alert">
       Не удалось отправить заявку. Проверьте соединение и попробуйте ещё раз или напишите на почту /
       в Telegram.
@@ -24,7 +31,7 @@
     </label>
   </div>
 
-  <div class="form__field" [class.form__field--error]="nameInvalid()">
+  <div class="form__field" [class.form__field--error]="nameInvalidValue">
     <label class="form__label" [attr.for]="id('name')">Как вас зовут</label>
     <input
       class="form__input"
@@ -32,14 +39,14 @@
       formControlName="name"
       type="text"
       autocomplete="name"
-      [attr.placeholder]="config().namePlaceholder"
-      [attr.aria-invalid]="nameInvalid()"
-      [attr.aria-describedby]="nameInvalid() ? id('name-error') : null"
+      [attr.placeholder]="configValue.namePlaceholder"
+      [attr.aria-invalid]="nameInvalidValue"
+      [attr.aria-describedby]="nameInvalidValue ? id('name-error') : null"
     />
     <span class="form__error" [id]="id('name-error')">Укажите имя</span>
   </div>
 
-  <div class="form__field" [class.form__field--error]="contactInvalid()">
+  <div class="form__field" [class.form__field--error]="contactInvalidValue">
     <label class="form__label" [attr.for]="id('contact')">Email или телефон / Telegram</label>
     <input
       class="form__input"
@@ -48,41 +55,41 @@
       type="text"
       autocomplete="email"
       placeholder="you@mail.ru или @username"
-      [attr.aria-invalid]="contactInvalid()"
-      [attr.aria-describedby]="contactInvalid() ? id('contact-error') : null"
+      [attr.aria-invalid]="contactInvalidValue"
+      [attr.aria-describedby]="contactInvalidValue ? id('contact-error') : null"
     />
     <span class="form__error" [id]="id('contact-error')">Оставьте контакт для связи</span>
   </div>
 
   <div class="form__field">
-    <label class="form__label" [attr.for]="id('task')">{{ config().taskLabel }}</label>
+    <label class="form__label" [attr.for]="id('task')">{{ configValue.taskLabel }}</label>
     <select class="form__input" [id]="id('task')" formControlName="task">
-      @for (option of config().taskOptions; track option) {
+      @for (option of configValue.taskOptions; track option) {
         <option [value]="option">{{ option }}</option>
       }
     </select>
   </div>
 
   <div class="form__field">
-    <label class="form__label" [attr.for]="id('message')">{{ config().messageLabel }}</label>
+    <label class="form__label" [attr.for]="id('message')">{{ configValue.messageLabel }}</label>
     <textarea
       class="form__input form__input--area"
       [id]="id('message')"
       formControlName="message"
       rows="3"
-      [attr.placeholder]="config().messagePlaceholder"
+      [attr.placeholder]="configValue.messagePlaceholder"
     ></textarea>
   </div>
 
-  <div class="form__field" [class.form__field--error]="agreeInvalid()">
+  <div class="form__field" [class.form__field--error]="agreeInvalidValue">
     <label class="form__consent">
       <input
         class="form__checkbox"
         type="checkbox"
         formControlName="consent"
         [id]="id('agree')"
-        [attr.aria-invalid]="agreeInvalid()"
-        [attr.aria-describedby]="agreeInvalid() ? id('agree-error') : null"
+        [attr.aria-invalid]="agreeInvalidValue"
+        [attr.aria-describedby]="agreeInvalidValue ? id('agree-error') : null"
       />
       <span
         >Согласен на обработку персональных данных и принимаю
@@ -92,12 +99,8 @@
     <span class="form__error" [id]="id('agree-error')">Нужно согласие на обработку данных</span>
   </div>
 
-  <button
-    class="btn btn--primary btn--block btn--lg"
-    type="submit"
-    [disabled]="state() === 'sending'"
-  >
-    {{ state() === 'sending' ? 'Отправляю…' : config().submitLabel }}
+  <button class="btn btn--primary btn--block btn--lg" type="submit" [disabled]="isStateSending">
+    {{ isStateSending ? 'Отправляю…' : configValue.submitLabel }}
   </button>
   <p class="form__note">Не передаю ваши данные третьим лицам и не рассылаю спам.</p>
 </form>

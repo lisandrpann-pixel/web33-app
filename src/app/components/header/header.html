@@ -1,3 +1,6 @@
+@let callToActionValue = callToAction();
+@let isDarkValue = isDark();
+
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="logo" routerLink="/">
@@ -24,18 +27,18 @@
 
     <div class="site-header__actions">
       <a
-        class="btn btn--primary site-header__cta"
-        [routerLink]="cta().route"
-        [fragment]="cta().fragment"
-        >{{ cta().label }}</a
+        class="btn btn--primary site-header__call-to-action"
+        [routerLink]="callToActionValue.route"
+        [fragment]="callToActionValue.fragment"
+        >{{ callToActionValue.label }}</a
       >
       <button
         class="theme-toggle"
         type="button"
         (click)="toggleTheme()"
         aria-label="Переключить тему"
-        [attr.aria-pressed]="isDark()"
-        [attr.title]="isDark() ? 'Включить светлую тему' : 'Включить тёмную тему'"
+        [attr.aria-pressed]="isDarkValue"
+        [attr.title]="isDarkValue ? 'Включить светлую тему' : 'Включить тёмную тему'"
       >
         <app-icon
           class="theme-toggle__icon theme-toggle__icon--sun"
@@ -86,9 +89,9 @@
   </ul>
   <a
     class="btn btn--primary btn--block btn--lg"
-    [routerLink]="cta().route"
-    [fragment]="cta().fragment"
+    [routerLink]="callToActionValue.route"
+    [fragment]="callToActionValue.fragment"
     (click)="closeMenu()"
-    >{{ cta().label }}</a
+    >{{ callToActionValue.label }}</a
   >
 </nav>

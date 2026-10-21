@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
-  PROGRAM_CTA,
+  PROGRAM_CALL_TO_ACTION,
   TRAINING_CONTACT,
   TRAINING_FAQ,
   TRAINING_FOR_WHOM,
@@ -10,7 +10,7 @@ import {
   TRAINING_PROGRAMS,
 } from '../../data/training.data';
 import { CONTACTS } from '../../data/site.data';
-import { ContactCta } from '../../components/contact-cta/contact-cta';
+import { ContactCallToAction } from '../../components/contact-call-to-action/contact-call-to-action';
 import { Faq } from '../../components/faq/faq';
 import { Feature } from '../../components/feature/feature';
 import { Hero } from '../../components/hero/hero';
@@ -24,14 +24,23 @@ import { Blockquote } from '../../components/blockquote/blockquote';
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './school.html',
   styleUrl: './school.scss',
-  imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta, Blockquote],
+  imports: [
+    Hero,
+    SectionHead,
+    InfoCard,
+    ServiceCard,
+    Feature,
+    Faq,
+    ContactCallToAction,
+    Blockquote,
+  ],
 })
 export class School {
   protected readonly hero = TRAINING_HERO;
   protected readonly forWhom = TRAINING_FOR_WHOM;
   protected readonly note = TRAINING_NOTE;
   protected readonly programs = TRAINING_PROGRAMS;
-  protected readonly programCta = PROGRAM_CTA;
+  protected readonly programCallToAction = PROGRAM_CALL_TO_ACTION;
   protected readonly principles = TRAINING_PRINCIPLES;
   protected readonly faq = TRAINING_FAQ;
   protected readonly contact = TRAINING_CONTACT;

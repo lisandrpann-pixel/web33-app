@@ -12,7 +12,7 @@ import {
   HOME_TESTIMONIALS,
 } from '../../data/home.data';
 import { CaseCard } from '../../components/case-card/case-card';
-import { ContactCta } from '../../components/contact-cta/contact-cta';
+import { ContactCallToAction } from '../../components/contact-call-to-action/contact-call-to-action';
 import { Faq } from '../../components/faq/faq';
 import { Feature } from '../../components/feature/feature';
 import { Hero } from '../../components/hero/hero';
@@ -36,7 +36,7 @@ import { Stack } from '../../components/stack/stack';
     Feature,
     Review,
     Faq,
-    ContactCta,
+    ContactCallToAction,
   ],
 })
 export class Home {

@@ -8,7 +8,7 @@ export interface ServicePkg {
   tag?: string;
 }
 
-export interface ServiceCta {
+export interface ServiceCallToAction {
   label: string;
   route: string;
   fragment?: string;

@@ -2,17 +2,17 @@ import { booleanAttribute, ChangeDetectionStrategy, Component, input } from '@an
 import { CONTACTS } from '../../data/site.data';
 import { ContactForm } from '../contact-form/contact-form';
 import { Icon } from '../icon/icon';
-import { ContactCtaData } from './contact-cta.model';
+import { ContactCallToActionData } from './contact-call-to-action.model';
 
 @Component({
-  selector: 'app-contact-cta',
+  selector: 'app-contact-call-to-action',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './contact-cta.html',
-  styleUrl: './contact-cta.scss',
+  templateUrl: './contact-call-to-action.html',
+  styleUrl: './contact-call-to-action.scss',
   imports: [Icon, ContactForm],
 })
-export class ContactCta {
-  readonly data = input.required<ContactCtaData>();
+export class ContactCallToAction {
+  readonly data = input.required<ContactCallToActionData>();
   readonly reply = input<string>();
   readonly soft = input(false, { transform: booleanAttribute });
 

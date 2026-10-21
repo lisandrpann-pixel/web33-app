@@ -1,9 +1,11 @@
+@let heroValue = hero();
+
 <section class="hero">
   <div class="container hero__grid">
     <div>
-      <span class="eyebrow">{{ hero().eyebrow }}</span>
+      <span class="eyebrow">{{ heroValue.eyebrow }}</span>
       <h1 class="hero__title">
-        @for (part of hero().titleParts; track $index) {
+        @for (part of heroValue.titleParts; track $index) {
           @if (part.accent) {
             <em class="hero__accent">{{ part.text }}</em>
           } @else {
@@ -11,9 +13,9 @@
           }
         }
       </h1>
-      <p class="lead lead--narrow">{{ hero().lead }}</p>
+      <p class="lead lead--narrow">{{ heroValue.lead }}</p>
       <div class="hero__actions">
-        @for (action of hero().actions; track action.label) {
+        @for (action of heroValue.actions; track action.label) {
           <a
             class="btn btn--lg"
             [class.btn--primary]="action.variant === 'primary'"
@@ -24,12 +26,12 @@
           >
         }
       </div>
-      @if (hero().note; as note) {
+      @if (heroValue.note; as note) {
         <p class="hero__note">{{ note }}</p>
       }
 
       <ul class="trust">
-        @for (item of hero().trust; track item) {
+        @for (item of heroValue.trust; track item) {
           <li class="trust__item">
             <app-icon class="trust__icon" name="check" [size]="18" [strokeWidth]="2.5"></app-icon>
             {{ item }}
@@ -38,6 +40,6 @@
       </ul>
     </div>
 
-    <app-hero-card [card]="hero().card"></app-hero-card>
+    <app-hero-card [card]="heroValue.card"></app-hero-card>
   </div>
 </section>

@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ServiceCta, ServicePkg } from './service-card.model';
+import { ServiceCallToAction, ServicePkg } from './service-card.model';
 
-export const DEFAULT_SERVICE_CTA: ServiceCta = {
+export const DEFAULT_SERVICE_CALL_TO_ACTION: ServiceCallToAction = {
   label: 'Заказать',
   route: '/',
   fragment: 'contact',
@@ -17,5 +17,5 @@ export const DEFAULT_SERVICE_CTA: ServiceCta = {
 })
 export class ServiceCard {
   readonly pkg = input.required<ServicePkg>();
-  readonly cta = input<ServiceCta>(DEFAULT_SERVICE_CTA);
+  readonly callToAction = input<ServiceCallToAction>(DEFAULT_SERVICE_CALL_TO_ACTION);
 }

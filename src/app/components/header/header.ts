@@ -29,7 +29,7 @@ export class Header {
 
   readonly nav = computed<NavItem[]>(() => (this.trainingMode() ? TRAINING_NAV : SITE_NAV));
 
-  readonly cta = computed<NavItem>(() =>
+  readonly callToAction = computed<NavItem>(() =>
     this.trainingMode()
       ? { label: 'Записаться, пока я не передумал', route: '/school', fragment: 'contact' }
       : { label: 'Обсудить проект', route: '/', fragment: 'contact' },

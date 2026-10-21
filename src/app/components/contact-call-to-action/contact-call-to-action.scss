@@ -2,7 +2,7 @@
   display: contents;
 }
 
-.cta {
+.call-to-action {
   position: relative;
   background: var(--bg-ink);
   color: #fff;
@@ -11,10 +11,10 @@
   overflow: hidden;
   border: 1px solid transparent;
 }
-[data-theme='dark'] .cta {
+[data-theme='dark'] .call-to-action {
   border-color: var(--line);
 }
-.cta::before {
+.call-to-action::before {
   content: '';
   position: absolute;
   right: -140px;
@@ -25,32 +25,32 @@
   /* Свечение в тон акценту логотипа */
   background: radial-gradient(circle, rgba(var(--accent-rgb), 0.22), transparent 65%);
 }
-.cta__grid {
+.call-to-action__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-7);
   align-items: start;
   position: relative;
 }
-.cta__eyebrow {
+.call-to-action__eyebrow {
   color: #ffd97a;
 }
-.cta__title {
+.call-to-action__title {
   color: #fff;
 }
-.cta__contacts {
+.call-to-action__contacts {
   list-style: none;
   margin: var(--space-5) 0 0;
   padding: 0;
 }
-.cta__contact {
+.call-to-action__contact {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-2) 0;
   color: #dfe5f1;
 }
-.cta__link {
+.call-to-action__link {
   color: #fff;
   font-weight: 600;
   text-decoration: underline;
@@ -60,13 +60,13 @@
     color var(--t) var(--ease),
     text-decoration-color var(--t) var(--ease);
 }
-.cta__link:hover {
+.call-to-action__link:hover {
   color: #bcd0ff;
   text-decoration-color: currentColor;
 }
 
 @media (max-width: 1024px) {
-  .cta__grid {
+  .call-to-action__grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }

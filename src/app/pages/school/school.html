@@ -26,7 +26,7 @@
     ></app-section-head>
     <div class="grid grid--3">
       @for (pkg of programs; track pkg.title) {
-        <app-service-card [pkg]="pkg" [cta]="programCta"></app-service-card>
+        <app-service-card [pkg]="pkg" [callToAction]="programCallToAction"></app-service-card>
       }
     </div>
   </div>
@@ -58,4 +58,8 @@
   </div>
 </section>
 
-<app-contact-cta [data]="contact" [reply]="shortReply" [soft]="true"></app-contact-cta>
+<app-contact-call-to-action
+  [data]="contact"
+  [reply]="shortReply"
+  [soft]="true"
+></app-contact-call-to-action>

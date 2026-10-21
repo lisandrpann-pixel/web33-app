@@ -1,7 +1,9 @@
+@let cardValue = card();
+
 <div class="card">
   <div class="card__icon" aria-hidden="true">
-    <app-icon [name]="card().icon"></app-icon>
+    <app-icon [name]="cardValue.icon"></app-icon>
   </div>
-  <h3 class="card__title">{{ card().title }}</h3>
-  <p class="card__text">{{ card().text }}</p>
+  <h3 class="card__title">{{ cardValue.title }}</h3>
+  <p class="card__text">{{ cardValue.text }}</p>
 </div>

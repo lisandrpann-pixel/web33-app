@@ -1,8 +1,10 @@
+@let callToActionValue = callToAction();
+
 <h2 class="outro__title">{{ title() }}</h2>
 <p class="lead lead--narrow lead--center">{{ lead() }}</p>
 <a
   class="btn btn--primary btn--lg outro__btn"
-  [routerLink]="cta().route"
-  [fragment]="cta().fragment"
-  >{{ cta().label }}</a
+  [routerLink]="callToActionValue.route"
+  [fragment]="callToActionValue.fragment"
+  >{{ callToActionValue.label }}</a
 >
