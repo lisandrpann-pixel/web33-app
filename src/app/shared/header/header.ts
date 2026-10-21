@@ -31,7 +31,7 @@ export class Header {
 
   readonly cta = computed<NavItem>(() =>
     this.trainingMode()
-      ? { label: 'Записаться на занятие', route: '/school', fragment: 'contact' }
+      ? { label: 'Записаться, пока я не передумал', route: '/school', fragment: 'contact' }
       : { label: 'Обсудить проект', route: '/', fragment: 'contact' },
   );
 

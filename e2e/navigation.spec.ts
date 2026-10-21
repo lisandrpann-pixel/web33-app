@@ -13,7 +13,7 @@ test('страница загружается без ошибок в консо�
 
 test('переходы по основным пунктам навигации', async ({ page }) => {
   await gotoApp(page);
-  await page.getByRole('link', { name: 'Обучение' }).first().click();
+  await page.getByRole('link', { name: 'Школа кода' }).first().click();
   await expect(page).toHaveURL(/school/);
   await page.getByRole('link', { name: 'Кейсы' }).first().click();
   await expect(page).toHaveURL(/cases/);

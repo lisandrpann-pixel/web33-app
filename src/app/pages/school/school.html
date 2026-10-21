@@ -5,13 +5,15 @@
     <app-section-head
       [centered]="true"
       eyebrow="Для кого"
-      title="Найдём программу под ваш уровень и цель"
+      title="Возраст и уровень не важны — главное желание"
+      lead="От «что такое HTML» до «нужно подтянуть React» — подстроимся под стартовую точку."
     ></app-section-head>
     <div class="grid grid--3">
       @for (card of forWhom; track card.title) {
         <app-info-card [card]="card"></app-info-card>
       }
     </div>
+    <p class="prose__quote note-quote">{{ note }}</p>
   </div>
 </section>
 
@@ -19,8 +21,8 @@
   <div class="container">
     <app-section-head
       eyebrow="Программы и цены"
-      title="Направления обучения"
-      lead="Выберите направление — либо соберём индивидуальный маршрут под цель."
+      title="Куда пойдём кодить"
+      lead="Выберите направление — либо скажите цель, и я разложу её на понятные шаги."
     ></app-section-head>
     <div class="grid grid--3">
       @for (pkg of programs; track pkg.title) {
@@ -35,7 +37,7 @@
     <app-section-head
       [centered]="true"
       eyebrow="Как проходят занятия"
-      title="Четыре принципа, на которых строится обучение"
+      title="Четыре принципа — без них никак"
     ></app-section-head>
     <div class="grid grid--2">
       @for (feature of principles; track feature.title) {
@@ -50,7 +52,7 @@
     <app-section-head
       [centered]="true"
       eyebrow="Вопросы"
-      title="Частые вопросы об обучении"
+      title="Вопросы, которые задают до оплаты (и правильно делают)"
     ></app-section-head>
     <app-faq [items]="faq"></app-faq>
   </div>

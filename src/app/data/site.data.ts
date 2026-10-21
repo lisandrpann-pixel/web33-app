@@ -7,7 +7,7 @@ export const SITE_NAV: NavItem[] = [
   { label: 'Услуги и цены', route: '/', fragment: 'services' },
   { label: 'Кейсы', route: '/cases' },
   { label: 'Технологии', route: '/', fragment: 'stack' },
-  { label: 'Обучение', route: '/school' },
+  { label: 'Школа кода', route: '/school' },
   { label: 'Обо мне', route: '/about' },
   // TODO: сделаем позже
   // { label: 'Блог', route: '/blog' },
@@ -16,7 +16,7 @@ export const SITE_NAV: NavItem[] = [
 export const TRAINING_NAV: NavItem[] = [
   { label: 'Разработка', route: '/', fragment: 'services' },
   { label: 'Кейсы', route: '/cases' },
-  { label: 'Обучение', route: '/school' },
+  { label: 'Школа кода', route: '/school' },
   { label: 'Обо мне', route: '/about' },
   // TODO: сделаем позже
   // { label: 'Блог', route: '/blog' },

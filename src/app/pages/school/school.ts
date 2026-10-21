@@ -5,6 +5,7 @@ import {
   TRAINING_FAQ,
   TRAINING_FOR_WHOM,
   TRAINING_HERO,
+  TRAINING_NOTE,
   TRAINING_PRINCIPLES,
   TRAINING_PROGRAMS,
 } from '../../data/training.data';
@@ -21,12 +22,13 @@ import { ServiceCard } from '../../shared/service-card/service-card';
   selector: 'app-school',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './school.html',
-  styles: [':host { display: contents; }'],
+  styleUrl: './school.scss',
   imports: [Hero, SectionHead, InfoCard, ServiceCard, Feature, Faq, ContactCta],
 })
 export class School {
   protected readonly hero = TRAINING_HERO;
   protected readonly forWhom = TRAINING_FOR_WHOM;
+  protected readonly note = TRAINING_NOTE;
   protected readonly programs = TRAINING_PROGRAMS;
   protected readonly programCta = PROGRAM_CTA;
   protected readonly principles = TRAINING_PRINCIPLES;
