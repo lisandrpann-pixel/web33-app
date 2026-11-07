@@ -26,8 +26,7 @@ export const CONTACTS = {
   email: 'web33.dev@yandex.ru',
   telegramHandle: '@aleksandrp_to',
   telegramUrl: 'https://t.me/aleksandrp_to',
-  reply: 'Отвечаю в течение 2 часов · Пн–Сб, 10:00–20:00',
-  replyShort: 'Отвечаю в течение 2 часов · Пн–Сб',
+  reply: 'Отвечаю в течение 2 часов, если свободен. Если нет — тыкните меня палочкой. Пн–Пт, 9:00–18:00.',
 } as const;
 
 export const FOOTER_ABOUT =

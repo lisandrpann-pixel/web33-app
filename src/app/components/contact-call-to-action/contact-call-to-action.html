@@ -6,17 +6,23 @@
       <div class="call-to-action__grid">
         <div>
           <span class="call-to-action__eyebrow">{{ dataValue.eyebrow }}</span>
+          
           <h2 class="call-to-action__title">{{ dataValue.title }}</h2>
+
           <p class="lead lead--inverse">{{ dataValue.lead }}</p>
+          
           <ul class="call-to-action__contacts">
             <li class="call-to-action__contact">
-              <app-icon name="mail" [size]="20"></app-icon>
+              <app-icon class="call-to-action__icon" name="mail" [size]="20"></app-icon>
+
               <a class="call-to-action__link" [href]="'mailto:' + contacts.email">{{
                 contacts.email
               }}</a>
             </li>
+            
             <li class="call-to-action__contact">
-              <app-icon name="telegram" [size]="20"></app-icon>
+              <app-icon class="call-to-action__icon" name="telegram" [size]="20"></app-icon>
+
               <a
                 class="call-to-action__link"
                 [href]="contacts.telegramUrl"
@@ -25,8 +31,10 @@
                 >Telegram: {{ contacts.telegramHandle }}</a
               >
             </li>
+
             <li class="call-to-action__contact">
-              <app-icon name="clock" [size]="20"></app-icon>
+              <app-icon class="call-to-action__icon" name="clock" [size]="20"></app-icon>
+
               {{ reply() ?? defaultReply }}
             </li>
           </ul>

@@ -45,7 +45,7 @@
 }
 .call-to-action__contact {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: var(--space-3);
   padding: var(--space-2) 0;
   color: #dfe5f1;
@@ -63,6 +63,11 @@
 .call-to-action__link:hover {
   color: #bcd0ff;
   text-decoration-color: currentColor;
+}
+.call-to-action__icon {
+  position: relative;
+  top: 4px;
+  display: inline-flex;
 }
 
 @media (max-width: 1024px) {

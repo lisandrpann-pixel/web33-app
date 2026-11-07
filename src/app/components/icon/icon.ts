@@ -5,6 +5,7 @@ import { IconName } from './icon.model';
   selector: 'app-icon',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './icon.html',
+  styleUrl: './icon.scss'
 })
 export class Icon {
   readonly name = input.required<IconName>();

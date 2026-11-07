@@ -44,5 +44,5 @@ export class School {
   protected readonly principles = TRAINING_PRINCIPLES;
   protected readonly faq = TRAINING_FAQ;
   protected readonly contact = TRAINING_CONTACT;
-  protected readonly shortReply = CONTACTS.replyShort;
+  protected readonly shortReply = CONTACTS.reply;
 }

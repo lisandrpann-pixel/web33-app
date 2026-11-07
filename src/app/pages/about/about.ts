@@ -29,6 +29,6 @@ export class About {
       { label: 'Договор', value: 'Да' },
     ],
     button: { label: 'Написать мне', route: '/', fragment: 'contact' },
-    hint: 'Отвечаю в течение 2 часов',
+    hint: 'Отвечаю в течении вечности',
   };
 }
