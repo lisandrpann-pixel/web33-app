@@ -1,5 +1,10 @@
 :host {
   display: contents;
+
+  /* Высоты шапки: строка навигации и плашка-объявление под ней.
+     Общие для sticky-шапки и отступа выезжающего мобильного меню. */
+  --header-inner-h: 68px;
+  --notice-h: 38px;
 }
 
 .site-header {
@@ -17,7 +22,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-5);
-  height: 68px;
+  height: var(--header-inner-h);
 }
 .site-header__actions {
   display: flex;
@@ -27,6 +32,49 @@
 }
 .site-header__call-to-action {
   flex-shrink: 0;
+}
+
+.site-header__notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  height: var(--notice-h);
+  padding: 0 var(--space-5);
+  background:
+    repeating-linear-gradient(135deg, rgba(15, 23, 42, 0.06) 0 10px, transparent 10px 20px),
+    var(--accent);
+  color: #0f172a;
+  font-size: clamp(0.78rem, 1.5vw, 0.92rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.site-header__notice-badge {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #0f172a;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 800;
+  animation: notice-pulse 2.4s var(--ease) infinite;
+}
+
+@keyframes notice-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(15, 23, 42, 0);
+  }
 }
 
 /* Блок: nav */
@@ -149,7 +197,7 @@
 /* Блок: mobile-nav */
 .mobile-nav {
   position: fixed;
-  inset: 68px 0 0 0;
+  inset: calc(var(--header-inner-h) + var(--notice-h)) 0 0 0;
   background: var(--bg);
   padding: var(--space-5);
   transform: translateX(100%);
